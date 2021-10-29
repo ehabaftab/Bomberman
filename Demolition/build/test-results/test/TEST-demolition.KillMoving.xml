@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="demolition.KillMoving" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-10-29T16:22:07" hostname="DESKTOP-1L4UACO" time="0.054">
+  <properties/>
+  <testcase name="bombTestRed()" classname="demolition.KillMoving" time="0.048"/>
+  <testcase name="bombTestBroken()" classname="demolition.KillMoving" time="0.002"/>
+  <testcase name="bombTestYellow()" classname="demolition.KillMoving" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>App.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">practice</a> &gt; <a href="index.source.html" class="el_package">alibi</a> &gt; <span class="el_source">App.java</span></div><h1>App.java</h1><pre class="source lang-java linenums">package alibi;
+
+import processing.core.PApplet;
+import processing.core.PImage;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+public class App extends PApplet {
+
+<span class="nc" id="L11">    public final int WIDTH = 500;</span>
+<span class="nc" id="L12">    public final int HEIGHT = 330;</span>
+
+    private Dino dino;
+    private ArrayList&lt;Cactus&gt; cacti;
+    private int timer;
+    private Random rand;
+
+    private PImage cactusImage;
+    
+<span class="nc" id="L21">    public App() {</span>
+        // Construct objects here
+<span class="nc" id="L23">        this.cacti = new ArrayList&lt;Cactus&gt;();</span>
+<span class="nc" id="L24">        this.timer = 100;</span>
+<span class="nc" id="L25">        this.rand = new Random();</span>
+<span class="nc" id="L26">    }</span>
+
+    public void settings() {
+<span class="nc" id="L29">        size(WIDTH, HEIGHT);</span>
+<span class="nc" id="L30">    }</span>
+
+    public void setup() {
+<span class="nc" id="L33">        frameRate(60);</span>
+
+        // Load images here
+<span class="nc" id="L36">        this.dino = new Dino(30, 200, this.loadImage(&quot;src/main/resources/dino1.png&quot;), cacti);</span>
+<span class="nc" id="L37">        this.cactusImage = this.loadImage(&quot;src/main/resources/cactus.png&quot;);</span>
+
+<span class="nc" id="L39">        this.cacti.add(new Cactus(400, 210, 5, cactusImage));</span>
+<span class="nc" id="L40">    }</span>
+
+    public void draw() {
+        // Main loop here
+<span class="nc" id="L44">        this.dino.tick();</span>
+
+<span class="nc bnc" id="L46" title="All 2 branches missed.">        for (Cactus cactus : this.cacti) {</span>
+<span class="nc" id="L47">            cactus.tick();</span>
+<span class="nc" id="L48">        }</span>
+
+<span class="nc" id="L50">        this.rect(-1, -1, WIDTH + 2, HEIGHT + 2);</span>
+<span class="nc" id="L51">        this.dino.draw(this);</span>
+
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        for (Cactus cactus : this.cacti) {</span>
+<span class="nc" id="L54">            cactus.draw(this);</span>
+<span class="nc" id="L55">        }</span>
+
+<span class="nc" id="L57">        this.timer--;</span>
+
+<span class="nc bnc" id="L59" title="All 2 branches missed.">        if (this.timer &lt; 0) {</span>
+<span class="nc" id="L60">            cacti.add(new Cactus(540, 210, 5, this.cactusImage));</span>
+<span class="nc" id="L61">            this.timer = this.rand.nextInt(60) + 40;</span>
+        }
+<span class="nc" id="L63">    }</span>
+
+    public void mousePressed() {
+<span class="nc" id="L66">        this.dino.jump();</span>
+<span class="nc" id="L67">    }</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L70">        PApplet.main(&quot;alibi.App&quot;);</span>
+<span class="nc" id="L71">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

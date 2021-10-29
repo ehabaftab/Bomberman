@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Player.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Demolition</a> &gt; <a href="index.source.html" class="el_package">demolition</a> &gt; <span class="el_source">Player.java</span></div><h1>Player.java</h1><pre class="source lang-java linenums">package demolition;
+
+import processing.core.PImage; 
+import processing.core.PApplet; 
+
+import java.util.ArrayList;
+
+public class Player extends MovingObject{
+    private ArrayList&lt;Goal&gt; goal;
+    private int counter;
+    private int objectX;
+    private int objectY;
+
+    public Player(PApplet app,int x, int y, PImage sprite, ArrayList&lt;Wall&gt; walls, ArrayList&lt;Broken&gt; broken,ArrayList&lt;Goal&gt; goal) {
+<span class="fc" id="L15">        super(app,x, y, sprite,walls,broken);</span>
+<span class="fc" id="L16">        this.goal = goal;</span>
+<span class="fc" id="L17">        this.direction = 2;</span>
+<span class="fc" id="L18">        this.counter = 1;</span>
+
+<span class="fc" id="L20">    }</span>
+
+    public void tick() {
+        
+<span class="nc bnc" id="L24" title="All 2 branches missed.">        if (direction == 2){</span>
+<span class="nc" id="L25">            this.setSprite(app.loadImage(&quot;src/main/resources/player/player&quot; + counter + &quot;.png&quot;));</span>
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        }else if(direction == 3){</span>
+<span class="nc" id="L27">            this.setSprite(app.loadImage(&quot;src/main/resources/player/player_left&quot; + counter + &quot;.png&quot;));</span>
+<span class="nc bnc" id="L28" title="All 2 branches missed.">        }else if(direction == 0){</span>
+<span class="nc" id="L29">            this.setSprite(app.loadImage(&quot;src/main/resources/player/player_up&quot; + counter + &quot;.png&quot;));</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">        }else if(direction == 1){</span>
+<span class="nc" id="L31">            this.setSprite(app.loadImage(&quot;src/main/resources/player/player_right&quot; + counter + &quot;.png&quot;));</span>
+        }
+<span class="nc" id="L33">        counter += 1;</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">        if(counter&gt;4)</span>
+<span class="nc" id="L35">            counter = 1;</span>
+
+<span class="nc" id="L37">    }</span>
+    
+    public boolean checkWin(){
+<span class="nc bnc" id="L40" title="All 2 branches missed.">        for(int j=0; j &lt; this.goal.size(); j++){</span>
+<span class="nc" id="L41">            objectY = this.goal.get(j).getY();</span>
+<span class="nc" id="L42">            objectX = this.goal.get(j).getX();</span>
+<span class="nc bnc" id="L43" title="All 4 branches missed.">            if(this.y + 16 == objectY &amp;&amp; this.x == objectX){</span>
+<span class="nc" id="L44">                return true;</span>
+            }        
+        }
+<span class="nc" id="L47">        return false;</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
