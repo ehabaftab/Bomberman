@@ -5,24 +5,30 @@ import processing.core.PApplet;
 import java.util.Random;
 import java.util.ArrayList;
 
+/**
+enemy that moves clockwise on collision and is able to kill the bomberman
+*/
 public class YellowEnemy extends MovingObject {
     
     private Random rand = new Random();
-    private boolean collision;
     private int counter;
     private int move;
     private ArrayList<Player> player;
     
-
+    /**
+    Constructor
+     */
     public YellowEnemy(PApplet app,int x, int y, PImage sprite, ArrayList<Wall> walls, ArrayList<Broken> broken,ArrayList<Player> player) {
         super(app,x, y, sprite,walls,broken);
         this.direction = 2;
         this.player = player;
-        this.collision = false;
         this.counter = 1;
         this.move = 0;
     }
 
+    /**
+    creates animation and moves the object
+     */
     public void tick() {
         move += 1;
         if(move==4){
@@ -60,6 +66,10 @@ public class YellowEnemy extends MovingObject {
             counter = 1;   
     }
 
+    /**
+    checks if the enemy meets player
+    @return success
+     */
     public boolean meetPlayer(){
         int playerX = 0;
         int playerY = 0; 

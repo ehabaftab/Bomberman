@@ -10,6 +10,8 @@ import processing.core.PImage;
 
 public class KillMoving{
     private Player testPlayer;
+    private RedEnemy testRedEnemyOne;
+    private YellowEnemy testYellowEnemyOne;
     private ArrayList<RedEnemy> testRedEnemy = new ArrayList<>();
     private ArrayList<YellowEnemy> testYellowEnemy = new ArrayList<>();
     private Bomb testBombOne;
@@ -27,7 +29,7 @@ public class KillMoving{
     - B - - -
     */
 
-     @BeforeEach
+    @BeforeEach
     public void setup(){
         this.testBombOne = new Bomb(app,96,96,null,broken,walls,player,testRedEnemy,testYellowEnemy);
         this.testRedEnemy.add(new RedEnemy(app,64,80,null,this.walls, this.broken,this.player));
@@ -62,6 +64,7 @@ public class KillMoving{
         this.testBombOne.kill();
         assertEquals(this.testYellowEnemy.size(),0);
     }
+
     @Test
     public void bombTestBroken(){
         this.testBombOne = new Bomb(app,96,160,null,broken,walls,player,testRedEnemy,testYellowEnemy);
@@ -73,5 +76,26 @@ public class KillMoving{
         this.testBombOne.kill();
         assertEquals(this.broken.size(),0);
     }
+
+    /*
+    - - - - -
+    R P Y - -
+    - - - - - 
+    */
+
+    @Test
+    public void meetPlayerTest(){
+        this.player.add(new Player(app,64,80,null,this.walls, this.broken,this.goal));
+        this.testRedEnemyOne = new RedEnemy(app,32,80,null,this.walls, this.broken,this.player);
+        this.testYellowEnemyOne = new YellowEnemy(app,96,80,null,this.walls, this.broken,this.player);
+        assertFalse(this.testRedEnemyOne.meetPlayer());
+        assertFalse(this.testYellowEnemyOne.meetPlayer());
+        this.testRedEnemyOne.moveRight();
+        this.testYellowEnemyOne.moveLeft();
+        assertTrue(this.testRedEnemyOne.meetPlayer());
+        assertTrue(this.testYellowEnemyOne.meetPlayer());
+    }
+
+
 
 }

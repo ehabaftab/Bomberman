@@ -37,14 +37,14 @@ public class Player extends MovingObject{
 <span class="nc" id="L37">    }</span>
     
     public boolean checkWin(){
-<span class="nc bnc" id="L40" title="All 2 branches missed.">        for(int j=0; j &lt; this.goal.size(); j++){</span>
-<span class="nc" id="L41">            objectY = this.goal.get(j).getY();</span>
-<span class="nc" id="L42">            objectX = this.goal.get(j).getX();</span>
-<span class="nc bnc" id="L43" title="All 4 branches missed.">            if(this.y + 16 == objectY &amp;&amp; this.x == objectX){</span>
-<span class="nc" id="L44">                return true;</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        for(int j=0; j &lt; this.goal.size(); j++){</span>
+<span class="fc" id="L41">            objectY = this.goal.get(j).getY();</span>
+<span class="fc" id="L42">            objectX = this.goal.get(j).getX();</span>
+<span class="pc bpc" id="L43" title="1 of 4 branches missed.">            if(this.y + 16 == objectY &amp;&amp; this.x == objectX){</span>
+<span class="fc" id="L44">                return true;</span>
             }        
         }
-<span class="nc" id="L47">        return false;</span>
+<span class="fc" id="L47">        return false;</span>
     }
 
 

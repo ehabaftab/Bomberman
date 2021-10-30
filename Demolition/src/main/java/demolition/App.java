@@ -80,6 +80,10 @@ public class App extends PApplet {
         size(WIDTH, HEIGHT);
     }
 
+
+    /**
+    Sets up the screen and level using the config file
+     */
     public void setup() {
         frameRate(FPS);
         
@@ -125,6 +129,9 @@ public class App extends PApplet {
         
     }
 
+    /**
+    draws on screen
+     */
     public void draw() {
         if(levelFinished){
             
@@ -251,6 +258,9 @@ public class App extends PApplet {
         }
     }
 
+    /**
+    to control the player using the arrow keys
+     */
     public void keyPressed(){
         if(!pressed){
             playerTimer = 0;
@@ -282,8 +292,7 @@ public class App extends PApplet {
                     reset();
                     setup();
                     gameOver = false;
-                    
-
+                
                 }else{
                     addBomb();
                 }
@@ -297,9 +306,17 @@ public class App extends PApplet {
         pressed = false;
     }
 
+    /**
+    removes the bomb after explosion
+    @param bomb bomb to remove
+     */
     public void removeBomb(Bomb bomb){
         this.bomb.remove(bomb);
     }
+
+    /**
+    adds bomb on clicking spacebar
+     */
     public void addBomb(){
         int xValue = 0;
         int yValue = 0;
@@ -308,11 +325,14 @@ public class App extends PApplet {
             yValue = player.getY();
         }
         // if(this.bomb.size() == 0){
-            this.bomb.add(new Bomb(this,xValue,yValue+16,bombImage,this.broken,walls,player,redEnemy,yellowEnemy));
+            this.bomb.add(new Bomb(this,xValue,yValue+16,bombImage,broken,walls,player,redEnemy,yellowEnemy));
             bombTimer = 15;
         // 
     }
 
+    /**
+    renders explosion on the screen
+     */
     public void renderExplosion(){
         boolean foundPositive = false;
         boolean foundNegative = false;
@@ -338,10 +358,10 @@ public class App extends PApplet {
                 if(startY - (32*i) == objectY && startX == objectX)
                     foundNegative = true;
             }
-            // if(!foundPositive)
-            //     this.image(this.loadImage("src/main/resources/explosion/vertical.png"), startX,startY +(32*i));
-            // if(!foundNegative)
-            //     this.image(this.loadImage("src/main/resources/explosion/vertical.png"), startX,startY - (32*i));
+             if(!foundPositive)
+                 this.image(this.loadImage("src/main/resources/explosion/vertical.png"), startX,startY +(32*i));
+             if(!foundNegative)
+                 this.image(this.loadImage("src/main/resources/explosion/vertical.png"), startX,startY - (32*i));
         }
 
         foundPositive = false;
@@ -370,6 +390,10 @@ public class App extends PApplet {
         }
        
     }
+
+    /**
+    resets the level if the user dies
+     */
     public void reset(){
         if(!gameOver){
             lives -= 1;
@@ -387,11 +411,12 @@ public class App extends PApplet {
         this.goal.clear();
         if(!gameOver && !levelFinished)
             loadLevel(currentLevel);
-        
     }
 
+    /**
+    renders the game over screen when the timer ends or player runs out of lives
+     */
     public void gameOverScreen(){
-
         reset();
         background(239, 129, 0);
         textFont(gameOverFont);
@@ -403,6 +428,10 @@ public class App extends PApplet {
         }
         
     }
+
+    /**
+    loads header containing lives of the player and the timer
+     */
     public void loadHeader(){
         background(239, 129, 0);
         textFont(timerFont);
@@ -412,6 +441,10 @@ public class App extends PApplet {
         this.image(livesIcon, 135,18);
         this.image(timerIcon, 255,18);
     }
+
+    /**
+    loads level
+     */
     public void loadLevel(int num){
         int x = 0;
         int y = 64;

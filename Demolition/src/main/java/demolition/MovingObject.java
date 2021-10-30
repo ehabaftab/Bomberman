@@ -4,12 +4,27 @@ import processing.core.PImage;
 import processing.core.PApplet; 
 import java.util.ArrayList;
 
+/**
+class for objects that can move
+*/
 public class MovingObject extends GameObject {
+    /**
+    stores the walls
+     */
     protected ArrayList<Wall> walls;
+    /**
+    stores the broken walls
+     */
     protected ArrayList<Broken> broken;
+    /**
+    the direction of the object moving
+     */
     protected int direction;
     protected PApplet app;
 
+    /**
+    Constructor
+     */
     public MovingObject(PApplet app,int x, int y, PImage sprite, ArrayList<Wall> walls, ArrayList<Broken> broken){
         super(x, y, sprite);
         this.walls = walls;
@@ -18,9 +33,12 @@ public class MovingObject extends GameObject {
 
     }
 
-    public void tick(){
+    public void tick(){}
 
-    }
+    /**
+    moves the object right
+    @return success 
+     */
     public boolean moveRight(){
         boolean collision = false;
         int wallX;
@@ -49,6 +67,11 @@ public class MovingObject extends GameObject {
         }
         return false;
     }
+
+    /**
+    moves the object left
+    @return success 
+     */
     public boolean moveLeft(){
         boolean collision = false;
         int wallX;
@@ -77,6 +100,11 @@ public class MovingObject extends GameObject {
         }
         return false;
     }
+
+    /**
+    moves the object Up
+    @return success 
+     */
     public boolean moveUp(){
         boolean collision = false;
         int wallX;
@@ -105,6 +133,11 @@ public class MovingObject extends GameObject {
         }
         return false;
     }
+
+    /**
+    moves the object down
+    @return success 
+     */
     public boolean moveDown(){
         boolean collision = false;
         int wallX;
@@ -132,4 +165,5 @@ public class MovingObject extends GameObject {
         }
         return false;
     }
+    
 }

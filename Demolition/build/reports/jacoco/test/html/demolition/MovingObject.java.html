@@ -25,7 +25,7 @@ public class MovingObject extends GameObject {
 <span class="fc" id="L25">        boolean collision = false;</span>
         int wallX;
         int wallY;
-<span class="pc bpc" id="L28" title="1 of 2 branches missed.">        if(walls != null){</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        if(walls != null){</span>
 <span class="fc bfc" id="L29" title="All 2 branches covered.">            for (Wall wall : this.walls) {</span>
 <span class="fc" id="L30">                wallX = wall.getX();</span>
 <span class="fc" id="L31">                wallY = wall.getY();</span>
@@ -34,7 +34,7 @@ public class MovingObject extends GameObject {
                 
 <span class="fc" id="L35">            }</span>
         }
-<span class="pc bpc" id="L37" title="1 of 2 branches missed.">        if(broken != null){</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        if(broken != null){</span>
 <span class="fc bfc" id="L38" title="All 2 branches covered.">            for (Broken broken : this.broken) {</span>
 <span class="fc" id="L39">                wallX = broken.getX();</span>
 <span class="fc" id="L40">                wallY = broken.getY();</span>
@@ -66,7 +66,7 @@ public class MovingObject extends GameObject {
 <span class="fc bfc" id="L66" title="All 2 branches covered.">            for (Broken broken : this.broken) {</span>
 <span class="fc" id="L67">                wallX = broken.getX();</span>
 <span class="fc" id="L68">                wallY = broken.getY();</span>
-<span class="pc bpc" id="L69" title="3 of 4 branches missed.">                if(this.x - 32 == wallX &amp;&amp; this.y+16 == wallY)</span>
+<span class="pc bpc" id="L69" title="1 of 4 branches missed.">                if(this.x - 32 == wallX &amp;&amp; this.y+16 == wallY)</span>
 <span class="nc" id="L70">                    collision = true;</span>
 <span class="fc" id="L71">            }</span>
         }
@@ -132,5 +132,6 @@ public class MovingObject extends GameObject {
         }
 <span class="fc" id="L133">        return false;</span>
     }
+    
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

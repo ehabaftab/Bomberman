@@ -4,22 +4,37 @@ import processing.core.PImage;
 import processing.core.PApplet; 
 import java.util.ArrayList;
 
+/**
+able to kill moving objects and broken walls
+*/
 public class Bomb extends GameObject {
     private PApplet app;
+    /**
+    stores the broken walls
+     */
     private ArrayList<Broken> broken;
+    /**
+    stores the broken walls
+     */
     private ArrayList<Wall> walls;
+    /**
+    stores the player
+     */
     private ArrayList<Player> player;
+    /**
+    stores the red enemy
+     */
     private ArrayList<RedEnemy> redEnemy;
+    /**
+    stores the yellow enemy
+     */
     private ArrayList<YellowEnemy> yellowEnemy;
-    private boolean reset;
-    private boolean alreadyBrokenUp;
-    private boolean alreadyBrokenRight;
-    private boolean alreadyBrokenDown;
-    private boolean alreadyBrokenLeft;
     private int counter;
     private boolean detonate;
     
-
+    /**
+    Constructor
+     */
     public Bomb(PApplet app, int x, int y, PImage sprite, ArrayList<Broken> broken,ArrayList<Wall> walls, ArrayList<Player> player,
     ArrayList<RedEnemy> redEnemy, ArrayList<YellowEnemy> yellowEnemy) {
         super(x, y, sprite);
@@ -31,14 +46,12 @@ public class Bomb extends GameObject {
         this.yellowEnemy = yellowEnemy;
         this.counter = 1;
         this.detonate = false;
-        this.reset = false;
-        alreadyBrokenUp = false;
-        alreadyBrokenRight = false;
-        alreadyBrokenDown = false;
-        alreadyBrokenLeft = false;
     
     }
 
+    /**
+    This method works as a timer for the bomb
+     */
     public void tick() {
         try{
             this.setSprite(app.loadImage("src/main/resources/bomb/bomb" + counter + ".png"));
@@ -50,15 +63,29 @@ public class Bomb extends GameObject {
         }
     }
 
+    /**
+    Checks if the bomb timer is up
+    @return the state of the bomb
+     */
+
     public boolean detonateCheck(){
         return detonate;
     }
 
+    /**
+    Kills any moving objects and breaks broken walls nearby
+    @return If the player has been killed
+     */
     public boolean kill(){
         int startX = this.x;
         int startY = this.y;
         int objectX;
         int objectY;
+        boolean alreadyBrokenUp = false;
+        boolean alreadyBrokenRight = false;
+        boolean alreadyBrokenDown = false;
+        boolean alreadyBrokenLeft = false;
+        boolean reset = false;
         //for vertical
         for(int i=0; i < 3; i++){
         

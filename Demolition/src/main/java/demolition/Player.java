@@ -2,15 +2,21 @@ package demolition;
 
 import processing.core.PImage; 
 import processing.core.PApplet; 
-
 import java.util.ArrayList;
 
+/**
+Bomberman whose objective is to reach the goal tile to win the game
+*/
 public class Player extends MovingObject{
+    /**
+    stores the goal tile
+     */
     private ArrayList<Goal> goal;
     private int counter;
-    private int objectX;
-    private int objectY;
 
+    /**
+    Constructor
+     */
     public Player(PApplet app,int x, int y, PImage sprite, ArrayList<Wall> walls, ArrayList<Broken> broken,ArrayList<Goal> goal) {
         super(app,x, y, sprite,walls,broken);
         this.goal = goal;
@@ -19,6 +25,9 @@ public class Player extends MovingObject{
 
     }
 
+    /**
+    creates animation
+     */
     public void tick() {
         
         if (direction == 2){
@@ -36,7 +45,13 @@ public class Player extends MovingObject{
 
     }
     
+    /**
+    Checks if the player has reached the goal tile
+    @return Passed
+     */
     public boolean checkWin(){
+        int objectX;
+        int objectY;
         for(int j=0; j < this.goal.size(); j++){
             objectY = this.goal.get(j).getY();
             objectX = this.goal.get(j).getX();
