@@ -3,35 +3,65 @@
 import processing.core.PImage; 
 import processing.core.PApplet; 
 
+/**
+class for all the objects on the screen
+*/
 public abstract class GameObject {
+    /**
+    the x coordinate
+     */
     protected int x;
+    /**
+    the y coordinate
+     */
     protected int y;
-
+    /**
+    the sprite of the object
+     */
     protected PImage sprite;
 
-<span class="fc" id="L12">    public GameObject(int x, int y, PImage sprite) {</span>
-<span class="fc" id="L13">        this.x = x;</span>
-<span class="fc" id="L14">        this.y = y;</span>
-<span class="fc" id="L15">        this.sprite = sprite;</span>
-<span class="fc" id="L16">    }</span>
+    /**
+    Constructor
+     */
+<span class="fc" id="L26">    public GameObject(int x, int y, PImage sprite) {</span>
+<span class="fc" id="L27">        this.x = x;</span>
+<span class="fc" id="L28">        this.y = y;</span>
+<span class="fc" id="L29">        this.sprite = sprite;</span>
+<span class="fc" id="L30">    }</span>
 
     public abstract void tick();
 
+    /**
+    Draws on the screen
+    @param app the app object to draw on
+     */
     public void draw(PApplet app) {
-<span class="nc" id="L21">        app.image(this.sprite, this.x, this.y);</span>
-<span class="nc" id="L22">    }</span>
+<span class="nc" id="L39">        app.image(this.sprite, this.x, this.y);</span>
+<span class="nc" id="L40">    }</span>
 
+    /**
+    to get the x coordinate
+    @return the int value of the coordinate
+     */
     public int getX() {
-<span class="fc" id="L25">        return this.x;</span>
+<span class="fc" id="L47">        return this.x;</span>
     }
 
+    /**
+    to get the y coordinate
+    @return the int value of the coordinate
+     */
     public int getY() {
-<span class="fc" id="L29">        return this.y;</span>
+<span class="fc" id="L55">        return this.y;</span>
     }
 
+    /**
+    to change the sprite of the object
+    @param sprite the PImage object to use to draw on the screen
+     */
     public void setSprite(PImage sprite) {
-<span class="nc" id="L33">        this.sprite = sprite;</span>
-<span class="nc" id="L34">    }</span>
+<span class="nc" id="L63">        this.sprite = sprite;</span>
+<span class="nc" id="L64">    }</span>
     
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

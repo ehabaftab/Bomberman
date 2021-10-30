@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="demolition.PlayerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-10-30T06:00:15" hostname="XOMEN" time="0.007">
+<testsuite name="demolition.PlayerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-10-30T07:39:33" hostname="XOMEN" time="0.008">
   <properties/>
-  <testcase name="constructor()" classname="demolition.PlayerTest" time="0.002"/>
+  <testcase name="constructor()" classname="demolition.PlayerTest" time="0.003"/>
   <testcase name="moveUpTest()" classname="demolition.PlayerTest" time="0.001"/>
-  <testcase name="moveRightTest()" classname="demolition.PlayerTest" time="0.0"/>
-  <testcase name="enemyMovement()" classname="demolition.PlayerTest" time="0.0"/>
+  <testcase name="moveRightTest()" classname="demolition.PlayerTest" time="0.001"/>
+  <testcase name="enemyMovement()" classname="demolition.PlayerTest" time="0.001"/>
   <testcase name="moveDownTest()" classname="demolition.PlayerTest" time="0.001"/>
-  <testcase name="moveLeftTest()" classname="demolition.PlayerTest" time="0.0"/>
+  <testcase name="moveLeftTest()" classname="demolition.PlayerTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -77,6 +77,7 @@ public class Bomb extends GameObject {
     @return If the player has been killed
      */
     public boolean kill(){
+        detonate = false;
         int startX = this.x;
         int startY = this.y;
         int objectX;
@@ -200,5 +201,66 @@ public class Bomb extends GameObject {
         alreadyBrokenDown = false;
         alreadyBrokenLeft = false;
         return reset;
+    }
+
+    /**
+    renders explosion on the screen
+     */
+    public void renderExplosion(){
+        boolean foundPositive = false;
+        boolean foundNegative = false;
+        int startX = this.x;
+        int startY = this.y;
+        int objectX;
+        int objectY;
+        //for vertical
+        for(int i=1; i < 3; i++){
+            for (Wall wall : this.walls) {
+                objectY = wall.getY();
+                objectX = wall.getX();
+                if(startY + (32*i) == objectY && startX == objectX)
+                    foundPositive = true;
+                if(startY - (32*i) == objectY && startX == objectX)
+                    foundNegative = true;
+            }
+            for (Broken broken: this.broken) {
+                objectY = broken.getY();
+                objectX = broken.getX();
+                if(startY + (32*i) == objectY && startX == objectX)
+                    foundPositive = true;
+                if(startY - (32*i) == objectY && startX == objectX)
+                    foundNegative = true;
+            }
+             if(!foundPositive)
+                 app.image(app.loadImage("src/main/resources/explosion/vertical.png"), startX,startY +(32*i));
+             if(!foundNegative)
+                app.image(app.loadImage("src/main/resources/explosion/vertical.png"), startX,startY - (32*i));
+        }
+
+        foundPositive = false;
+        foundNegative = false;
+        for(int i=1; i < 3; i++){
+            for (Wall wall : this.walls) {
+                objectX = wall.getX();
+                objectY = wall.getY();
+                if(startX + (32*i) == objectX && startY == objectY)
+                    foundPositive = true;
+                if(startX - (32*i) == objectX && startY == objectY)
+                    foundNegative = true;
+            }
+            for (Broken broken: this.broken) {
+                objectX = broken.getX();
+                objectY = broken.getY();
+                if(startX + (32*i) == objectX && startY == objectY)
+                    foundPositive = true;
+                if(startX - (32*i) == objectX && startY == objectY)
+                    foundNegative = true;
+            }
+            if(!foundPositive)
+                app.image(app.loadImage("src/main/resources/explosion/horizontal.png"),startX +(32*i),startY);
+            if(!foundNegative)
+                app.image(app.loadImage("src/main/resources/explosion/horizontal.png"), startX - (32*i),startY);
+        }
+       
     }
 }

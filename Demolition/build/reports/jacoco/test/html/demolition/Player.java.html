@@ -2,49 +2,64 @@
 
 import processing.core.PImage; 
 import processing.core.PApplet; 
-
 import java.util.ArrayList;
 
+/**
+Bomberman whose objective is to reach the goal tile to win the game
+*/
 public class Player extends MovingObject{
+    /**
+    stores the goal tile
+     */
     private ArrayList&lt;Goal&gt; goal;
     private int counter;
-    private int objectX;
-    private int objectY;
 
+    /**
+    Constructor
+     */
     public Player(PApplet app,int x, int y, PImage sprite, ArrayList&lt;Wall&gt; walls, ArrayList&lt;Broken&gt; broken,ArrayList&lt;Goal&gt; goal) {
-<span class="fc" id="L15">        super(app,x, y, sprite,walls,broken);</span>
-<span class="fc" id="L16">        this.goal = goal;</span>
-<span class="fc" id="L17">        this.direction = 2;</span>
-<span class="fc" id="L18">        this.counter = 1;</span>
+<span class="fc" id="L21">        super(app,x, y, sprite,walls,broken);</span>
+<span class="fc" id="L22">        this.goal = goal;</span>
+<span class="fc" id="L23">        this.direction = 2;</span>
+<span class="fc" id="L24">        this.counter = 1;</span>
 
-<span class="fc" id="L20">    }</span>
+<span class="fc" id="L26">    }</span>
 
+    /**
+    creates animation
+     */
     public void tick() {
         
-<span class="nc bnc" id="L24" title="All 2 branches missed.">        if (direction == 2){</span>
-<span class="nc" id="L25">            this.setSprite(app.loadImage(&quot;src/main/resources/player/player&quot; + counter + &quot;.png&quot;));</span>
-<span class="nc bnc" id="L26" title="All 2 branches missed.">        }else if(direction == 3){</span>
-<span class="nc" id="L27">            this.setSprite(app.loadImage(&quot;src/main/resources/player/player_left&quot; + counter + &quot;.png&quot;));</span>
-<span class="nc bnc" id="L28" title="All 2 branches missed.">        }else if(direction == 0){</span>
-<span class="nc" id="L29">            this.setSprite(app.loadImage(&quot;src/main/resources/player/player_up&quot; + counter + &quot;.png&quot;));</span>
-<span class="nc bnc" id="L30" title="All 2 branches missed.">        }else if(direction == 1){</span>
-<span class="nc" id="L31">            this.setSprite(app.loadImage(&quot;src/main/resources/player/player_right&quot; + counter + &quot;.png&quot;));</span>
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        if (direction == 2){</span>
+<span class="nc" id="L34">            this.setSprite(app.loadImage(&quot;src/main/resources/player/player&quot; + counter + &quot;.png&quot;));</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">        }else if(direction == 3){</span>
+<span class="nc" id="L36">            this.setSprite(app.loadImage(&quot;src/main/resources/player/player_left&quot; + counter + &quot;.png&quot;));</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        }else if(direction == 0){</span>
+<span class="nc" id="L38">            this.setSprite(app.loadImage(&quot;src/main/resources/player/player_up&quot; + counter + &quot;.png&quot;));</span>
+<span class="nc bnc" id="L39" title="All 2 branches missed.">        }else if(direction == 1){</span>
+<span class="nc" id="L40">            this.setSprite(app.loadImage(&quot;src/main/resources/player/player_right&quot; + counter + &quot;.png&quot;));</span>
         }
-<span class="nc" id="L33">        counter += 1;</span>
-<span class="nc bnc" id="L34" title="All 2 branches missed.">        if(counter&gt;4)</span>
-<span class="nc" id="L35">            counter = 1;</span>
+<span class="nc" id="L42">        counter += 1;</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">        if(counter&gt;4)</span>
+<span class="nc" id="L44">            counter = 1;</span>
 
-<span class="nc" id="L37">    }</span>
+<span class="nc" id="L46">    }</span>
     
+    /**
+    Checks if the player has reached the goal tile
+    @return Passed
+     */
     public boolean checkWin(){
-<span class="fc bfc" id="L40" title="All 2 branches covered.">        for(int j=0; j &lt; this.goal.size(); j++){</span>
-<span class="fc" id="L41">            objectY = this.goal.get(j).getY();</span>
-<span class="fc" id="L42">            objectX = this.goal.get(j).getX();</span>
-<span class="pc bpc" id="L43" title="1 of 4 branches missed.">            if(this.y + 16 == objectY &amp;&amp; this.x == objectX){</span>
-<span class="fc" id="L44">                return true;</span>
+        int objectX;
+        int objectY;
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        for(int j=0; j &lt; this.goal.size(); j++){</span>
+<span class="fc" id="L56">            objectY = this.goal.get(j).getY();</span>
+<span class="fc" id="L57">            objectX = this.goal.get(j).getX();</span>
+<span class="pc bpc" id="L58" title="1 of 4 branches missed.">            if(this.y + 16 == objectY &amp;&amp; this.x == objectX){</span>
+<span class="fc" id="L59">                return true;</span>
             }        
         }
-<span class="fc" id="L47">        return false;</span>
+<span class="fc" id="L62">        return false;</span>
     }
 
 

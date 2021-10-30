@@ -219,7 +219,6 @@ public class App extends PApplet {
                     bombX = bomb.getX();
                     bombY = bomb.getY();
                     bombToRemove = bomb;
-                    this.bombRemove = true;
                     explosion = true;
                     explosionTimer = 30;
                     if(bomb.kill())
@@ -229,8 +228,9 @@ public class App extends PApplet {
 
             if(explosion){
                 this.image(this.loadImage("src/main/resources/explosion/centre.png"), bombX,bombY);
-                renderExplosion();
+                bombToRemove.renderExplosion();
                 if(explosionTimer==0){
+                    this.bombRemove = true;
                     explosion = false;
                     
                 }
@@ -330,66 +330,6 @@ public class App extends PApplet {
         // 
     }
 
-    /**
-    renders explosion on the screen
-     */
-    public void renderExplosion(){
-        boolean foundPositive = false;
-        boolean foundNegative = false;
-        int startX = bombX;
-        int startY = bombY;
-        int objectX;
-        int objectY;
-        //for vertical
-        for(int i=1; i < 3; i++){
-            for (Wall wall : this.walls) {
-                objectY = wall.getY();
-                objectX = wall.getX();
-                if(startY + (32*i) == objectY && startX == objectX)
-                    foundPositive = true;
-                if(startY - (32*i) == objectY && startX == objectX)
-                    foundNegative = true;
-            }
-            for (Broken broken: this.broken) {
-                objectY = broken.getY();
-                objectX = broken.getX();
-                if(startY + (32*i) == objectY && startX == objectX)
-                    foundPositive = true;
-                if(startY - (32*i) == objectY && startX == objectX)
-                    foundNegative = true;
-            }
-             if(!foundPositive)
-                 this.image(this.loadImage("src/main/resources/explosion/vertical.png"), startX,startY +(32*i));
-             if(!foundNegative)
-                 this.image(this.loadImage("src/main/resources/explosion/vertical.png"), startX,startY - (32*i));
-        }
-
-        foundPositive = false;
-        foundNegative = false;
-        for(int i=1; i < 3; i++){
-            for (Wall wall : this.walls) {
-                objectX = wall.getX();
-                objectY = wall.getY();
-                if(startX + (32*i) == objectX && startY == objectY)
-                    foundPositive = true;
-                if(startX - (32*i) == objectX && startY == objectY)
-                    foundNegative = true;
-            }
-            for (Broken broken: this.broken) {
-                objectX = broken.getX();
-                objectY = broken.getY();
-                if(startX + (32*i) == objectX && startY == objectY)
-                    foundPositive = true;
-                if(startX - (32*i) == objectX && startY == objectY)
-                    foundNegative = true;
-            }
-            if(!foundPositive)
-                this.image(this.loadImage("src/main/resources/explosion/horizontal.png"),startX +(32*i),startY);
-            if(!foundNegative)
-                this.image(this.loadImage("src/main/resources/explosion/horizontal.png"), startX - (32*i),startY);
-        }
-       
-    }
 
     /**
     resets the level if the user dies

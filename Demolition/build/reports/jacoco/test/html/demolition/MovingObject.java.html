@@ -4,108 +4,108 @@ import processing.core.PImage;
 import processing.core.PApplet; 
 import java.util.ArrayList;
 
+/**
+class for objects that can move
+*/
 public class MovingObject extends GameObject {
+    /**
+    stores the walls
+     */
     protected ArrayList&lt;Wall&gt; walls;
+    /**
+    stores the broken walls
+     */
     protected ArrayList&lt;Broken&gt; broken;
+    /**
+    the direction of the object moving
+     */
     protected int direction;
     protected PApplet app;
 
+    /**
+    Constructor
+     */
     public MovingObject(PApplet app,int x, int y, PImage sprite, ArrayList&lt;Wall&gt; walls, ArrayList&lt;Broken&gt; broken){
-<span class="fc" id="L14">        super(x, y, sprite);</span>
-<span class="fc" id="L15">        this.walls = walls;</span>
-<span class="fc" id="L16">        this.broken = broken;</span>
-<span class="fc" id="L17">        this.app = app;</span>
+<span class="fc" id="L29">        super(x, y, sprite);</span>
+<span class="fc" id="L30">        this.walls = walls;</span>
+<span class="fc" id="L31">        this.broken = broken;</span>
+<span class="fc" id="L32">        this.app = app;</span>
 
-<span class="fc" id="L19">    }</span>
+<span class="fc" id="L34">    }</span>
 
-    public void tick(){
+<span class="nc" id="L36">    public void tick(){}</span>
 
-<span class="nc" id="L23">    }</span>
+    /**
+    moves the object right
+    @return success 
+     */
     public boolean moveRight(){
-<span class="fc" id="L25">        boolean collision = false;</span>
+<span class="fc" id="L43">        boolean collision = false;</span>
         int wallX;
         int wallY;
-<span class="fc bfc" id="L28" title="All 2 branches covered.">        if(walls != null){</span>
-<span class="fc bfc" id="L29" title="All 2 branches covered.">            for (Wall wall : this.walls) {</span>
-<span class="fc" id="L30">                wallX = wall.getX();</span>
-<span class="fc" id="L31">                wallY = wall.getY();</span>
-<span class="pc bpc" id="L32" title="3 of 4 branches missed.">                if(this.x + 32 == wallX &amp;&amp; this.y+16 == wallY)</span>
-<span class="nc" id="L33">                    collision = true;</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">        if(walls != null){</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">            for (Wall wall : this.walls) {</span>
+<span class="fc" id="L48">                wallX = wall.getX();</span>
+<span class="fc" id="L49">                wallY = wall.getY();</span>
+<span class="pc bpc" id="L50" title="3 of 4 branches missed.">                if(this.x + 32 == wallX &amp;&amp; this.y+16 == wallY)</span>
+<span class="nc" id="L51">                    collision = true;</span>
                 
-<span class="fc" id="L35">            }</span>
+<span class="fc" id="L53">            }</span>
         }
-<span class="fc bfc" id="L37" title="All 2 branches covered.">        if(broken != null){</span>
-<span class="fc bfc" id="L38" title="All 2 branches covered.">            for (Broken broken : this.broken) {</span>
-<span class="fc" id="L39">                wallX = broken.getX();</span>
-<span class="fc" id="L40">                wallY = broken.getY();</span>
-<span class="fc bfc" id="L41" title="All 4 branches covered.">                if(this.x + 32 == wallX &amp;&amp; this.y+16 == wallY)</span>
-<span class="fc" id="L42">                    collision = true;</span>
-<span class="fc" id="L43">            }</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        if(broken != null){</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">            for (Broken broken : this.broken) {</span>
+<span class="fc" id="L57">                wallX = broken.getX();</span>
+<span class="fc" id="L58">                wallY = broken.getY();</span>
+<span class="fc bfc" id="L59" title="All 4 branches covered.">                if(this.x + 32 == wallX &amp;&amp; this.y+16 == wallY)</span>
+<span class="fc" id="L60">                    collision = true;</span>
+<span class="fc" id="L61">            }</span>
         }
-<span class="fc bfc" id="L45" title="All 2 branches covered.">        if(!collision){</span>
-<span class="fc" id="L46">            this.x += 32;</span>
-<span class="fc" id="L47">            direction = 1;</span>
-<span class="fc" id="L48">            return true;</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">        if(!collision){</span>
+<span class="fc" id="L64">            this.x += 32;</span>
+<span class="fc" id="L65">            direction = 1;</span>
+<span class="fc" id="L66">            return true;</span>
         }
-<span class="fc" id="L50">        return false;</span>
+<span class="fc" id="L68">        return false;</span>
     }
+
+    /**
+    moves the object left
+    @return success 
+     */
     public boolean moveLeft(){
-<span class="fc" id="L53">        boolean collision = false;</span>
+<span class="fc" id="L76">        boolean collision = false;</span>
         int wallX;
         int wallY;
-<span class="pc bpc" id="L56" title="1 of 2 branches missed.">        if(walls != null){</span>
-<span class="fc bfc" id="L57" title="All 2 branches covered.">            for (Wall wall : this.walls) {</span>
-<span class="fc" id="L58">                wallX = wall.getX();</span>
-<span class="fc" id="L59">                wallY = wall.getY();</span>
-<span class="fc bfc" id="L60" title="All 4 branches covered.">                if(this.x - 32 == wallX &amp;&amp; this.y+16 == wallY)</span>
-<span class="fc" id="L61">                    collision = true;</span>
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">        if(walls != null){</span>
+<span class="fc bfc" id="L80" title="All 2 branches covered.">            for (Wall wall : this.walls) {</span>
+<span class="fc" id="L81">                wallX = wall.getX();</span>
+<span class="fc" id="L82">                wallY = wall.getY();</span>
+<span class="fc bfc" id="L83" title="All 4 branches covered.">                if(this.x - 32 == wallX &amp;&amp; this.y+16 == wallY)</span>
+<span class="fc" id="L84">                    collision = true;</span>
                 
-<span class="fc" id="L63">            }</span>
+<span class="fc" id="L86">            }</span>
         }
-<span class="pc bpc" id="L65" title="1 of 2 branches missed.">        if(broken != null){</span>
-<span class="fc bfc" id="L66" title="All 2 branches covered.">            for (Broken broken : this.broken) {</span>
-<span class="fc" id="L67">                wallX = broken.getX();</span>
-<span class="fc" id="L68">                wallY = broken.getY();</span>
-<span class="pc bpc" id="L69" title="1 of 4 branches missed.">                if(this.x - 32 == wallX &amp;&amp; this.y+16 == wallY)</span>
-<span class="nc" id="L70">                    collision = true;</span>
-<span class="fc" id="L71">            }</span>
+<span class="pc bpc" id="L88" title="1 of 2 branches missed.">        if(broken != null){</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">            for (Broken broken : this.broken) {</span>
+<span class="fc" id="L90">                wallX = broken.getX();</span>
+<span class="fc" id="L91">                wallY = broken.getY();</span>
+<span class="pc bpc" id="L92" title="1 of 4 branches missed.">                if(this.x - 32 == wallX &amp;&amp; this.y+16 == wallY)</span>
+<span class="nc" id="L93">                    collision = true;</span>
+<span class="fc" id="L94">            }</span>
         }
-<span class="fc bfc" id="L73" title="All 2 branches covered.">        if(!collision){</span>
-<span class="fc" id="L74">            this.x -= 32;</span>
-<span class="fc" id="L75">            direction = 3;</span>
-<span class="fc" id="L76">            return true;</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">        if(!collision){</span>
+<span class="fc" id="L97">            this.x -= 32;</span>
+<span class="fc" id="L98">            direction = 3;</span>
+<span class="fc" id="L99">            return true;</span>
         }
-<span class="fc" id="L78">        return false;</span>
+<span class="fc" id="L101">        return false;</span>
     }
+
+    /**
+    moves the object Up
+    @return success 
+     */
     public boolean moveUp(){
-<span class="fc" id="L81">        boolean collision = false;</span>
-        int wallX;
-        int wallY;
-<span class="pc bpc" id="L84" title="1 of 2 branches missed.">        if(walls != null){</span>
-<span class="fc bfc" id="L85" title="All 2 branches covered.">            for (Wall wall : this.walls) {</span>
-<span class="fc" id="L86">                wallX = wall.getX();</span>
-<span class="fc" id="L87">                wallY = wall.getY();</span>
-<span class="pc bpc" id="L88" title="1 of 4 branches missed.">                if(this.x  == wallX &amp;&amp; (this.y+16) - 32 == wallY)</span>
-<span class="nc" id="L89">                    collision = true;</span>
-                
-<span class="fc" id="L91">            }</span>
-        }
-<span class="pc bpc" id="L93" title="1 of 2 branches missed.">        if(broken != null){    </span>
-<span class="fc bfc" id="L94" title="All 2 branches covered.">            for (Broken broken : this.broken) {</span>
-<span class="fc" id="L95">                wallX = broken.getX();</span>
-<span class="fc" id="L96">                wallY = broken.getY();</span>
-<span class="fc bfc" id="L97" title="All 4 branches covered.">                if(this.x  == wallX &amp;&amp; (this.y+16) - 32 == wallY)</span>
-<span class="fc" id="L98">                    collision = true;</span>
-<span class="fc" id="L99">            }</span>
-        }
-<span class="fc bfc" id="L101" title="All 2 branches covered.">        if(!collision){</span>
-<span class="fc" id="L102">            this.y -= 32;</span>
-<span class="fc" id="L103">            direction = 0;</span>
-<span class="fc" id="L104">            return true;</span>
-        }
-<span class="fc" id="L106">        return false;</span>
-    }
-    public boolean moveDown(){
 <span class="fc" id="L109">        boolean collision = false;</span>
         int wallX;
         int wallY;
@@ -113,24 +113,57 @@ public class MovingObject extends GameObject {
 <span class="fc bfc" id="L113" title="All 2 branches covered.">            for (Wall wall : this.walls) {</span>
 <span class="fc" id="L114">                wallX = wall.getX();</span>
 <span class="fc" id="L115">                wallY = wall.getY();</span>
-<span class="pc bpc" id="L116" title="1 of 4 branches missed.">                if(this.x  == wallX &amp;&amp; (this.y+16) + 32 == wallY)</span>
-<span class="fc" id="L117">                    collision = true;</span>
-<span class="fc" id="L118">            }</span>
+<span class="pc bpc" id="L116" title="1 of 4 branches missed.">                if(this.x  == wallX &amp;&amp; (this.y+16) - 32 == wallY)</span>
+<span class="nc" id="L117">                    collision = true;</span>
+                
+<span class="fc" id="L119">            }</span>
         }
-<span class="pc bpc" id="L120" title="1 of 2 branches missed.">        if(broken != null){</span>
-<span class="fc bfc" id="L121" title="All 2 branches covered.">            for (Broken broken : this.broken) {</span>
-<span class="fc" id="L122">                wallX = broken.getX();</span>
-<span class="fc" id="L123">                wallY = broken.getY();</span>
-<span class="fc bfc" id="L124" title="All 4 branches covered.">                if(this.x  == wallX &amp;&amp; (this.y+16) + 32 == wallY)</span>
-<span class="fc" id="L125">                    collision = true;</span>
-<span class="fc" id="L126">            }</span>
+<span class="pc bpc" id="L121" title="1 of 2 branches missed.">        if(broken != null){    </span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">            for (Broken broken : this.broken) {</span>
+<span class="fc" id="L123">                wallX = broken.getX();</span>
+<span class="fc" id="L124">                wallY = broken.getY();</span>
+<span class="fc bfc" id="L125" title="All 4 branches covered.">                if(this.x  == wallX &amp;&amp; (this.y+16) - 32 == wallY)</span>
+<span class="fc" id="L126">                    collision = true;</span>
+<span class="fc" id="L127">            }</span>
         }
-<span class="fc bfc" id="L128" title="All 2 branches covered.">        if(!collision){</span>
-<span class="fc" id="L129">            this.y += 32;</span>
-<span class="fc" id="L130">            direction = 2;</span>
-<span class="fc" id="L131">            return true;</span>
+<span class="fc bfc" id="L129" title="All 2 branches covered.">        if(!collision){</span>
+<span class="fc" id="L130">            this.y -= 32;</span>
+<span class="fc" id="L131">            direction = 0;</span>
+<span class="fc" id="L132">            return true;</span>
         }
-<span class="fc" id="L133">        return false;</span>
+<span class="fc" id="L134">        return false;</span>
+    }
+
+    /**
+    moves the object down
+    @return success 
+     */
+    public boolean moveDown(){
+<span class="fc" id="L142">        boolean collision = false;</span>
+        int wallX;
+        int wallY;
+<span class="pc bpc" id="L145" title="1 of 2 branches missed.">        if(walls != null){</span>
+<span class="fc bfc" id="L146" title="All 2 branches covered.">            for (Wall wall : this.walls) {</span>
+<span class="fc" id="L147">                wallX = wall.getX();</span>
+<span class="fc" id="L148">                wallY = wall.getY();</span>
+<span class="pc bpc" id="L149" title="1 of 4 branches missed.">                if(this.x  == wallX &amp;&amp; (this.y+16) + 32 == wallY)</span>
+<span class="fc" id="L150">                    collision = true;</span>
+<span class="fc" id="L151">            }</span>
+        }
+<span class="pc bpc" id="L153" title="1 of 2 branches missed.">        if(broken != null){</span>
+<span class="fc bfc" id="L154" title="All 2 branches covered.">            for (Broken broken : this.broken) {</span>
+<span class="fc" id="L155">                wallX = broken.getX();</span>
+<span class="fc" id="L156">                wallY = broken.getY();</span>
+<span class="fc bfc" id="L157" title="All 4 branches covered.">                if(this.x  == wallX &amp;&amp; (this.y+16) + 32 == wallY)</span>
+<span class="fc" id="L158">                    collision = true;</span>
+<span class="fc" id="L159">            }</span>
+        }
+<span class="fc bfc" id="L161" title="All 2 branches covered.">        if(!collision){</span>
+<span class="fc" id="L162">            this.y += 32;</span>
+<span class="fc" id="L163">            direction = 2;</span>
+<span class="fc" id="L164">            return true;</span>
+        }
+<span class="fc" id="L166">        return false;</span>
     }
     
 }

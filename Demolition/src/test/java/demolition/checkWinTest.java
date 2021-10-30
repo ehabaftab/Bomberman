@@ -21,6 +21,5 @@ public class checkWinTest{
         assertFalse(this.testPlayer.checkWin());
         this.testPlayer.moveRight();
         assertTrue(this.testPlayer.checkWin());
-        app.reset();
     }
 }
