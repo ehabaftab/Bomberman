@@ -8,6 +8,7 @@ import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.Scanner;
 import java.lang.Object;
+import processing.data.JSONObject;
 
 
 public class App extends PApplet {
@@ -99,34 +100,27 @@ public class App extends PApplet {
         this.gameOverFont = createFont("src/main/resources/PressStart2P-Regular.ttf",25);
         this.timerIcon = this.loadImage("src/main/resources/icons/clock.png");
         this.livesIcon = this.loadImage("src/main/resources/icons/player.png");
-        StringBuilder s = new StringBuilder("");
+
+        StringBuilder s = new StringBuilder();
         try{
 
             File jsonFile = new File("config.json");
             Scanner jsonReader = new Scanner(jsonFile);
             int counter = 0;
-            while(jsonReader.hasNext()) {
-                temp = jsonReader.next();
-                if(counter == 5){
-                    levelOneFile = temp.substring(1, temp.length()-2);
-                }else if(counter == 7){
-                    levelOneTime = parseInt(temp);
-                }else if(counter == 11){
-                    levelTwoFile = temp.substring(1, temp.length()-2);
-                }else if(counter == 13){
-                    levelTwoTime = parseInt(temp);
-                }else if(counter == 17){
-                    lives = parseInt(temp);
-                }
-                counter += 1;
+            while(jsonReader.hasNextLine()){
+                s.append(jsonReader.nextLine());
             }
+            JSONObject config = JSONObject.parse(s.toString());
+            lives = config.getInt("lives");
+            levelOneFile = config.getJSONArray("levels").getJSONObject(0).getString("path");
+            levelOneTime = config.getJSONArray("levels").getJSONObject(0).getInt("time");
+            levelTwoFile = config.getJSONArray("levels").getJSONObject(1).getString("path");
+            levelTwoTime = config.getJSONArray("levels").getJSONObject(1).getInt("time");
             jsonReader.close();
         } catch (FileNotFoundException e) {
             println("An error occurred.");
         }
-
         loadLevel(currentLevel);
-        
     }
 
     /**
