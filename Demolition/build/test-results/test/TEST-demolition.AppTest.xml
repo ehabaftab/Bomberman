@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="demolition.AppTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-11-01T06:16:29" hostname="XOMEN" time="0.029">
+<testsuite name="demolition.AppTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-11-01T07:31:04" hostname="XOMEN" time="0.032">
   <properties/>
-  <testcase name="basicTest()" classname="demolition.AppTest" time="0.029">
+  <testcase name="basicTest()" classname="demolition.AppTest" time="0.032">
     <failure message="java.lang.NullPointerException" type="java.lang.NullPointerException">java.lang.NullPointerException
 	at processing.core.PApplet.frameRate(PApplet.java:3342)
-	at demolition.App.setup(App.java:89)
+	at demolition.App.setup(App.java:81)
 	at demolition.AppTest.basicTest(AppTest.java:15)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
