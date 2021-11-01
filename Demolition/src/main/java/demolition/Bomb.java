@@ -72,12 +72,16 @@ public class Bomb extends GameObject {
         int startY = this.y;
         int objectX;
         int objectY;
+        // to prevent from killing through the walls
         boolean alreadyBrokenUp = false;
         boolean alreadyBrokenRight = false;
         boolean alreadyBrokenDown = false;
         boolean alreadyBrokenLeft = false;
         boolean reset = false;
-        //for vertical
+        /*
+        loops through 4 blocks from the centre to in all directions, and removes
+         any broken walls, red enemeies, yellow enemies or players
+        */
         for(int i=0; i < 3; i++){
         
             for(int j=0; j < this.walls.size(); j++){
@@ -205,6 +209,7 @@ public class Bomb extends GameObject {
         int objectY;
         //for vertical
         app.image(app.loadImage("src/main/resources/explosion/centre.png"), startX,startY);
+        // loop to render explosion upto two blocks from the centre
         for(int i=1; i < 3; i++){
             for (Wall wall : this.walls) {
                 objectY = wall.getY();
@@ -230,6 +235,7 @@ public class Bomb extends GameObject {
 
         foundPositive = false;
         foundNegative = false;
+        // loop to render explosion upto two blocks from the centre
         for(int i=1; i < 3; i++){
             for (Wall wall : this.walls) {
                 objectX = wall.getX();

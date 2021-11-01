@@ -12,7 +12,6 @@ public class AppTest {
     @Test 
     public void basicTest() {
         App app = new App();
-        app.setup();
     }
     
 }
