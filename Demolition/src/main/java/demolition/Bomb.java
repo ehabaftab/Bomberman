@@ -204,6 +204,7 @@ public class Bomb extends GameObject {
         int objectX;
         int objectY;
         //for vertical
+        app.image(app.loadImage("src/main/resources/explosion/centre.png"), startX,startY);
         for(int i=1; i < 3; i++){
             for (Wall wall : this.walls) {
                 objectY = wall.getY();
@@ -222,7 +223,7 @@ public class Bomb extends GameObject {
                     foundNegative = true;
             }
              if(!foundPositive)
-                 app.image(app.loadImage("src/main/resources/explosion/vertical.png"), startX,startY +(32*i));
+                app.image(app.loadImage("src/main/resources/explosion/vertical.png"), startX,startY +(32*i));
              if(!foundNegative)
                 app.image(app.loadImage("src/main/resources/explosion/vertical.png"), startX,startY - (32*i));
         }

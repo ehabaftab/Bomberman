@@ -50,8 +50,6 @@ public class App extends PApplet {
     int explosionTimer = 30;
     int levelTime;
     int counter = 0;
-    int bombX;
-    int bombY;
     Bomb bombToRemove;
     boolean pressed = false;
     boolean bombRemove = false;
@@ -60,8 +58,6 @@ public class App extends PApplet {
     boolean gameOver = false;
     boolean gameWon = false;
     boolean levelFinished = false;
-
-    String temp;
 
     public App() {
         this.walls = new ArrayList<Wall>();
@@ -72,14 +68,11 @@ public class App extends PApplet {
         this.yellowEnemy = new ArrayList<YellowEnemy>();
         this.bomb = new ArrayList<Bomb>();
         this.goal = new ArrayList<Goal>();
-        
-        
     }
 
     public void settings() {
         size(WIDTH, HEIGHT);
     }
-
 
     /**
     Sets up the screen and level using the config file
@@ -102,7 +95,6 @@ public class App extends PApplet {
 
         StringBuilder s = new StringBuilder();
         try{
-
             File jsonFile = new File("config.json");
             Scanner jsonReader = new Scanner(jsonFile);
             int counter = 0;
@@ -209,8 +201,6 @@ public class App extends PApplet {
                 bomb.draw(this);
                 
                 if(bomb.detonateCheck()== true){
-                    bombX = bomb.getX();
-                    bombY = bomb.getY();
                     bombToRemove = bomb;
                     explosion = true;
                     explosionTimer = 30;
@@ -220,15 +210,12 @@ public class App extends PApplet {
             }
 
             if(explosion){
-                this.image(this.loadImage("src/main/resources/explosion/centre.png"), bombX,bombY);
                 bombToRemove.renderExplosion();
                 if(explosionTimer==0){
                     this.bombRemove = true;
-                    explosion = false;
-                    
+                    explosion = false;  
                 }
             }
-
             if(this.bombRemove){
                 removeBomb(bombToRemove);
             }
@@ -237,8 +224,6 @@ public class App extends PApplet {
                 reset();
             }
 
-            
-            
             if(counter == 60){
                 levelTime -= 1;
                 counter = 0;
@@ -250,7 +235,6 @@ public class App extends PApplet {
             explosionTimer -= 1;
         }
     }
-
     /**
     to control the player using the arrow keys
      */
@@ -290,7 +274,6 @@ public class App extends PApplet {
                     addBomb();
                 }
             }
-            
             pressed = true;
         }
     }
@@ -322,7 +305,6 @@ public class App extends PApplet {
             bombTimer = 15;
         // 
     }
-
 
     /**
     resets the level if the user dies
@@ -361,7 +343,6 @@ public class App extends PApplet {
         }
         
     }
-
     /**
     loads header containing lives of the player and the timer
      */
@@ -426,6 +407,3 @@ public class App extends PApplet {
         PApplet.main("demolition.App");
     }
 }
-
-
-//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
