@@ -82,10 +82,4 @@ public class YellowEnemy extends MovingObject {
             return true;
         return false;
     }
-
-
-    
-
-
-    
 }

@@ -79,12 +79,5 @@ public class RedEnemy extends MovingObject{
         if(this.x == playerX && this.y == playerY)
             return true;
         return false;
-    }
-
-
-
-    
-
-
-    
+    } 
 }
