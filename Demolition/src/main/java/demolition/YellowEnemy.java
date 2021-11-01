@@ -17,6 +17,7 @@ public class YellowEnemy extends MovingObject {
     
     /**
     Constructor
+    @param player stores the player
      */
     public YellowEnemy(PApplet app,int x, int y, PImage sprite, ArrayList<Wall> walls, ArrayList<Broken> broken,ArrayList<Player> player) {
         super(app,x, y, sprite,walls,broken);

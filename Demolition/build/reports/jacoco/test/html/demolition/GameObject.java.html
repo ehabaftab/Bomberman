@@ -22,12 +22,14 @@ public abstract class GameObject {
 
     /**
     Constructor
+    @param x the x-coordinate
+    @param y the y-coordinate
      */
-<span class="fc" id="L26">    public GameObject(int x, int y, PImage sprite) {</span>
-<span class="fc" id="L27">        this.x = x;</span>
-<span class="fc" id="L28">        this.y = y;</span>
-<span class="fc" id="L29">        this.sprite = sprite;</span>
-<span class="fc" id="L30">    }</span>
+<span class="fc" id="L28">    public GameObject(int x, int y, PImage sprite) {</span>
+<span class="fc" id="L29">        this.x = x;</span>
+<span class="fc" id="L30">        this.y = y;</span>
+<span class="fc" id="L31">        this.sprite = sprite;</span>
+<span class="fc" id="L32">    }</span>
 
     public abstract void tick();
 
@@ -36,15 +38,15 @@ public abstract class GameObject {
     @param app the app object to draw on
      */
     public void draw(PApplet app) {
-<span class="nc" id="L39">        app.image(this.sprite, this.x, this.y);</span>
-<span class="nc" id="L40">    }</span>
+<span class="nc" id="L41">        app.image(this.sprite, this.x, this.y);</span>
+<span class="nc" id="L42">    }</span>
 
     /**
     to get the x coordinate
     @return the int value of the coordinate
      */
     public int getX() {
-<span class="fc" id="L47">        return this.x;</span>
+<span class="fc" id="L49">        return this.x;</span>
     }
 
     /**
@@ -52,7 +54,7 @@ public abstract class GameObject {
     @return the int value of the coordinate
      */
     public int getY() {
-<span class="fc" id="L55">        return this.y;</span>
+<span class="fc" id="L57">        return this.y;</span>
     }
 
     /**
@@ -60,8 +62,8 @@ public abstract class GameObject {
     @param sprite the PImage object to use to draw on the screen
      */
     public void setSprite(PImage sprite) {
-<span class="nc" id="L63">        this.sprite = sprite;</span>
-<span class="nc" id="L64">    }</span>
+<span class="nc" id="L65">        this.sprite = sprite;</span>
+<span class="nc" id="L66">    }</span>
     
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="demolition.PlayerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-10-30T07:54:15" hostname="XOMEN" time="0.007">
+<testsuite name="demolition.PlayerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-11-01T06:16:29" hostname="XOMEN" time="0.007">
   <properties/>
   <testcase name="constructor()" classname="demolition.PlayerTest" time="0.002"/>
   <testcase name="moveUpTest()" classname="demolition.PlayerTest" time="0.001"/>

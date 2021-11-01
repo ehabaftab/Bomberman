@@ -13,13 +13,11 @@ public class RedEnemy extends MovingObject{
     private Random rand = new Random();
     private int counter;
     private int move;
-    /**
-    stores the player
-     */
     private ArrayList<Player> player;
     
     /**
     constructor
+    @param player stores the player
      */
     public RedEnemy(PApplet app,int x, int y, PImage sprite, ArrayList<Wall> walls, ArrayList<Broken> broken,ArrayList<Player> player) {
         super(app,x, y, sprite,walls,broken);

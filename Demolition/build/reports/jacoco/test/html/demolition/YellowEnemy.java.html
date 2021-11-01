@@ -17,69 +17,70 @@ public class YellowEnemy extends MovingObject {
     
     /**
     Constructor
+    @param player stores the player
      */
     public YellowEnemy(PApplet app,int x, int y, PImage sprite, ArrayList&lt;Wall&gt; walls, ArrayList&lt;Broken&gt; broken,ArrayList&lt;Player&gt; player) {
-<span class="fc" id="L22">        super(app,x, y, sprite,walls,broken);</span>
-<span class="fc" id="L23">        this.direction = 2;</span>
-<span class="fc" id="L24">        this.player = player;</span>
-<span class="fc" id="L25">        this.counter = 1;</span>
-<span class="fc" id="L26">        this.move = 0;</span>
-<span class="fc" id="L27">    }</span>
+<span class="fc" id="L23">        super(app,x, y, sprite,walls,broken);</span>
+<span class="fc" id="L24">        this.direction = 2;</span>
+<span class="fc" id="L25">        this.player = player;</span>
+<span class="fc" id="L26">        this.counter = 1;</span>
+<span class="fc" id="L27">        this.move = 0;</span>
+<span class="fc" id="L28">    }</span>
 
     /**
     creates animation and moves the object
      */
     public void tick() {
-<span class="fc" id="L33">        move += 1;</span>
-<span class="fc bfc" id="L34" title="All 2 branches covered.">        if(move==4){</span>
-<span class="fc" id="L35">        boolean success = false;</span>
-<span class="fc bfc" id="L36" title="All 2 branches covered.">            while(!success) {</span>
-<span class="pc bpc" id="L37" title="1 of 2 branches missed.">                if (this.direction==1){</span>
-<span class="nc" id="L38">                    success=this.moveRight();</span>
-<span class="fc bfc" id="L39" title="All 2 branches covered.">                }else if(this.direction==3){</span>
-<span class="fc" id="L40">                    success=this.moveLeft();</span>
-<span class="pc bpc" id="L41" title="1 of 2 branches missed.">                }else if(this.direction==2){</span>
-<span class="fc" id="L42">                    success=this.moveDown();</span>
-<span class="nc bnc" id="L43" title="All 2 branches missed.">                }else if(this.direction==0){</span>
-<span class="nc" id="L44">                    success=this.moveUp();</span>
+<span class="fc" id="L34">        move += 1;</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        if(move==4){</span>
+<span class="fc" id="L36">        boolean success = false;</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">            while(!success) {</span>
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">                if (this.direction==1){</span>
+<span class="nc" id="L39">                    success=this.moveRight();</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">                }else if(this.direction==3){</span>
+<span class="fc" id="L41">                    success=this.moveLeft();</span>
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">                }else if(this.direction==2){</span>
+<span class="fc" id="L43">                    success=this.moveDown();</span>
+<span class="nc bnc" id="L44" title="All 2 branches missed.">                }else if(this.direction==0){</span>
+<span class="nc" id="L45">                    success=this.moveUp();</span>
                 }
-<span class="fc bfc" id="L46" title="All 2 branches covered.">                if(!success)</span>
-<span class="fc" id="L47">                    this.direction += 1;</span>
-<span class="pc bpc" id="L48" title="1 of 2 branches missed.">                    if (this.direction&gt;3)</span>
-<span class="nc" id="L49">                        this.direction = 0;</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">                if(!success)</span>
+<span class="fc" id="L48">                    this.direction += 1;</span>
+<span class="pc bpc" id="L49" title="1 of 2 branches missed.">                    if (this.direction&gt;3)</span>
+<span class="nc" id="L50">                        this.direction = 0;</span>
             }
-<span class="fc" id="L51">            move = 0;</span>
+<span class="fc" id="L52">            move = 0;</span>
         }
         try{
-<span class="fc bfc" id="L54" title="All 2 branches covered.">            if (direction == 2){</span>
-<span class="nc" id="L55">                this.setSprite(app.loadImage(&quot;src/main/resources/yellow_enemy/yellow_down&quot; + counter + &quot;.png&quot;));</span>
-<span class="pc bpc" id="L56" title="1 of 2 branches missed.">            }else if(direction == 3){</span>
-<span class="nc" id="L57">                this.setSprite(app.loadImage(&quot;src/main/resources/yellow_enemy/yellow_left&quot; + counter + &quot;.png&quot;));</span>
-<span class="nc bnc" id="L58" title="All 2 branches missed.">            }else if(direction == 0){</span>
-<span class="nc" id="L59">                this.setSprite(app.loadImage(&quot;src/main/resources/yellow_enemy/yellow_up&quot; + counter + &quot;.png&quot;));</span>
-<span class="nc bnc" id="L60" title="All 2 branches missed.">            }else if(direction == 1){</span>
-<span class="nc" id="L61">                this.setSprite(app.loadImage(&quot;src/main/resources/yellow_enemy/yellow_right&quot; + counter + &quot;.png&quot;));</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">            if (direction == 2){</span>
+<span class="nc" id="L56">                this.setSprite(app.loadImage(&quot;src/main/resources/yellow_enemy/yellow_down&quot; + counter + &quot;.png&quot;));</span>
+<span class="pc bpc" id="L57" title="1 of 2 branches missed.">            }else if(direction == 3){</span>
+<span class="nc" id="L58">                this.setSprite(app.loadImage(&quot;src/main/resources/yellow_enemy/yellow_left&quot; + counter + &quot;.png&quot;));</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">            }else if(direction == 0){</span>
+<span class="nc" id="L60">                this.setSprite(app.loadImage(&quot;src/main/resources/yellow_enemy/yellow_up&quot; + counter + &quot;.png&quot;));</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">            }else if(direction == 1){</span>
+<span class="nc" id="L62">                this.setSprite(app.loadImage(&quot;src/main/resources/yellow_enemy/yellow_right&quot; + counter + &quot;.png&quot;));</span>
             }
-<span class="pc" id="L63">        }catch(Exception e){}</span>
-<span class="fc" id="L64">        counter += 1;</span>
-<span class="fc bfc" id="L65" title="All 2 branches covered.">        if(counter&gt;4)</span>
-<span class="fc" id="L66">            counter = 1;   </span>
-<span class="fc" id="L67">    }</span>
+<span class="pc" id="L64">        }catch(Exception e){}</span>
+<span class="fc" id="L65">        counter += 1;</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">        if(counter&gt;4)</span>
+<span class="fc" id="L67">            counter = 1;   </span>
+<span class="fc" id="L68">    }</span>
 
     /**
     checks if the enemy meets player
     @return success
      */
     public boolean meetPlayer(){
-<span class="fc" id="L74">        int playerX = 0;</span>
-<span class="fc" id="L75">        int playerY = 0; </span>
-<span class="fc bfc" id="L76" title="All 2 branches covered.">        for(Player player : this.player){</span>
-<span class="fc" id="L77">            playerX = player.getX();</span>
-<span class="fc" id="L78">            playerY = player.getY();</span>
-<span class="fc" id="L79">        }</span>
-<span class="pc bpc" id="L80" title="1 of 4 branches missed.">        if(this.x == playerX &amp;&amp; this.y == playerY)</span>
-<span class="fc" id="L81">            return true;</span>
-<span class="fc" id="L82">        return false;</span>
+<span class="fc" id="L75">        int playerX = 0;</span>
+<span class="fc" id="L76">        int playerY = 0; </span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">        for(Player player : this.player){</span>
+<span class="fc" id="L78">            playerX = player.getX();</span>
+<span class="fc" id="L79">            playerY = player.getY();</span>
+<span class="fc" id="L80">        }</span>
+<span class="pc bpc" id="L81" title="1 of 4 branches missed.">        if(this.x == playerX &amp;&amp; this.y == playerY)</span>
+<span class="fc" id="L82">            return true;</span>
+<span class="fc" id="L83">        return false;</span>
     }
 
 

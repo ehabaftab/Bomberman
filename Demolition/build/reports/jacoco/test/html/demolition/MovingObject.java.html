@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
 class for objects that can move
 */
-public class MovingObject extends GameObject {
+public abstract class MovingObject extends GameObject {
     /**
     stores the walls
      */

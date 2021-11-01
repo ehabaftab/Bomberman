@@ -9,31 +9,21 @@ able to kill moving objects and broken walls
 */
 public class Bomb extends GameObject {
     private PApplet app;
-    /**
-    stores the broken walls
-     */
     private ArrayList<Broken> broken;
-    /**
-    stores the broken walls
-     */
     private ArrayList<Wall> walls;
-    /**
-    stores the player
-     */
     private ArrayList<Player> player;
-    /**
-    stores the red enemy
-     */
     private ArrayList<RedEnemy> redEnemy;
-    /**
-    stores the yellow enemy
-     */
     private ArrayList<YellowEnemy> yellowEnemy;
     private int counter;
     private boolean detonate;
     
     /**
     Constructor
+    @param broken stores the broken walls
+    @param player stores the player
+    @param walls stores the solid walls
+    @param redEnemy stores the red enemy
+    @param yellowEnemy stores the yellow enemy
      */
     public Bomb(PApplet app, int x, int y, PImage sprite, ArrayList<Broken> broken,ArrayList<Wall> walls, ArrayList<Player> player,
     ArrayList<RedEnemy> redEnemy, ArrayList<YellowEnemy> yellowEnemy) {

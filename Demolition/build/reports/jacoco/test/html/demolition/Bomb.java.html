@@ -9,59 +9,49 @@ able to kill moving objects and broken walls
 */
 public class Bomb extends GameObject {
     private PApplet app;
-    /**
-    stores the broken walls
-     */
     private ArrayList&lt;Broken&gt; broken;
-    /**
-    stores the broken walls
-     */
     private ArrayList&lt;Wall&gt; walls;
-    /**
-    stores the player
-     */
     private ArrayList&lt;Player&gt; player;
-    /**
-    stores the red enemy
-     */
     private ArrayList&lt;RedEnemy&gt; redEnemy;
-    /**
-    stores the yellow enemy
-     */
     private ArrayList&lt;YellowEnemy&gt; yellowEnemy;
     private int counter;
     private boolean detonate;
     
     /**
     Constructor
+    @param broken stores the broken walls
+    @param player stores the player
+    @param walls stores the solid walls
+    @param redEnemy stores the red enemy
+    @param yellowEnemy stores the yellow enemy
      */
     public Bomb(PApplet app, int x, int y, PImage sprite, ArrayList&lt;Broken&gt; broken,ArrayList&lt;Wall&gt; walls, ArrayList&lt;Player&gt; player,
     ArrayList&lt;RedEnemy&gt; redEnemy, ArrayList&lt;YellowEnemy&gt; yellowEnemy) {
-<span class="fc" id="L40">        super(x, y, sprite);</span>
-<span class="fc" id="L41">        this.app = app;</span>
-<span class="fc" id="L42">        this.broken = broken;</span>
-<span class="fc" id="L43">        this.player = player;</span>
-<span class="fc" id="L44">        this.walls = walls;</span>
-<span class="fc" id="L45">        this.redEnemy = redEnemy;</span>
-<span class="fc" id="L46">        this.yellowEnemy = yellowEnemy;</span>
-<span class="fc" id="L47">        this.counter = 1;</span>
-<span class="fc" id="L48">        this.detonate = false;</span>
+<span class="fc" id="L30">        super(x, y, sprite);</span>
+<span class="fc" id="L31">        this.app = app;</span>
+<span class="fc" id="L32">        this.broken = broken;</span>
+<span class="fc" id="L33">        this.player = player;</span>
+<span class="fc" id="L34">        this.walls = walls;</span>
+<span class="fc" id="L35">        this.redEnemy = redEnemy;</span>
+<span class="fc" id="L36">        this.yellowEnemy = yellowEnemy;</span>
+<span class="fc" id="L37">        this.counter = 1;</span>
+<span class="fc" id="L38">        this.detonate = false;</span>
     
-<span class="fc" id="L50">    }</span>
+<span class="fc" id="L40">    }</span>
 
     /**
     This method works as a timer for the bomb
      */
     public void tick() {
         try{
-<span class="nc" id="L57">            this.setSprite(app.loadImage(&quot;src/main/resources/bomb/bomb&quot; + counter + &quot;.png&quot;));</span>
-<span class="pc" id="L58">        }catch(Exception e){}</span>
-<span class="fc" id="L59">        counter += 1;</span>
-<span class="fc bfc" id="L60" title="All 2 branches covered.">        if(counter == 9){</span>
-<span class="fc" id="L61">            detonate = true;</span>
-<span class="fc" id="L62">            counter = 1;</span>
+<span class="nc" id="L47">            this.setSprite(app.loadImage(&quot;src/main/resources/bomb/bomb&quot; + counter + &quot;.png&quot;));</span>
+<span class="pc" id="L48">        }catch(Exception e){}</span>
+<span class="fc" id="L49">        counter += 1;</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        if(counter == 9){</span>
+<span class="fc" id="L51">            detonate = true;</span>
+<span class="fc" id="L52">            counter = 1;</span>
         }
-<span class="fc" id="L64">    }</span>
+<span class="fc" id="L54">    }</span>
 
     /**
     Checks if the bomb timer is up
@@ -69,7 +59,7 @@ public class Bomb extends GameObject {
      */
 
     public boolean detonateCheck(){
-<span class="nc" id="L72">        return detonate;</span>
+<span class="nc" id="L62">        return detonate;</span>
     }
 
     /**
@@ -77,191 +67,191 @@ public class Bomb extends GameObject {
     @return If the player has been killed
      */
     public boolean kill(){
-<span class="fc" id="L80">        detonate = false;</span>
-<span class="fc" id="L81">        int startX = this.x;</span>
-<span class="fc" id="L82">        int startY = this.y;</span>
+<span class="fc" id="L70">        detonate = false;</span>
+<span class="fc" id="L71">        int startX = this.x;</span>
+<span class="fc" id="L72">        int startY = this.y;</span>
         int objectX;
         int objectY;
-<span class="fc" id="L85">        boolean alreadyBrokenUp = false;</span>
-<span class="fc" id="L86">        boolean alreadyBrokenRight = false;</span>
-<span class="fc" id="L87">        boolean alreadyBrokenDown = false;</span>
-<span class="fc" id="L88">        boolean alreadyBrokenLeft = false;</span>
-<span class="fc" id="L89">        boolean reset = false;</span>
+<span class="fc" id="L75">        boolean alreadyBrokenUp = false;</span>
+<span class="fc" id="L76">        boolean alreadyBrokenRight = false;</span>
+<span class="fc" id="L77">        boolean alreadyBrokenDown = false;</span>
+<span class="fc" id="L78">        boolean alreadyBrokenLeft = false;</span>
+<span class="fc" id="L79">        boolean reset = false;</span>
         //for vertical
-<span class="fc bfc" id="L91" title="All 2 branches covered.">        for(int i=0; i &lt; 3; i++){</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">        for(int i=0; i &lt; 3; i++){</span>
         
-<span class="fc bfc" id="L93" title="All 2 branches covered.">            for(int j=0; j &lt; this.walls.size(); j++){</span>
-<span class="fc" id="L94">                objectY = this.walls.get(j).getY();</span>
-<span class="fc" id="L95">                objectX = this.walls.get(j).getX();</span>
-<span class="pc bpc" id="L96" title="1 of 4 branches missed.">                if(startY + (32*i) == objectY &amp;&amp; startX == objectX){</span>
-<span class="nc" id="L97">                    alreadyBrokenDown = true;</span>
+<span class="fc bfc" id="L83" title="All 2 branches covered.">            for(int j=0; j &lt; this.walls.size(); j++){</span>
+<span class="fc" id="L84">                objectY = this.walls.get(j).getY();</span>
+<span class="fc" id="L85">                objectX = this.walls.get(j).getX();</span>
+<span class="pc bpc" id="L86" title="1 of 4 branches missed.">                if(startY + (32*i) == objectY &amp;&amp; startX == objectX){</span>
+<span class="nc" id="L87">                    alreadyBrokenDown = true;</span>
                 }
-<span class="pc bpc" id="L99" title="1 of 4 branches missed.">                if(startY - (32*i) == objectY &amp;&amp; startX == objectX){</span>
-<span class="nc" id="L100">                    alreadyBrokenUp = true;</span>
+<span class="pc bpc" id="L89" title="1 of 4 branches missed.">                if(startY - (32*i) == objectY &amp;&amp; startX == objectX){</span>
+<span class="nc" id="L90">                    alreadyBrokenUp = true;</span>
                 }
-<span class="pc bpc" id="L102" title="3 of 4 branches missed.">                if(startX + (32*i) == objectX &amp;&amp; startY == objectY){</span>
-<span class="nc" id="L103">                    alreadyBrokenRight = true;</span>
+<span class="pc bpc" id="L92" title="3 of 4 branches missed.">                if(startX + (32*i) == objectX &amp;&amp; startY == objectY){</span>
+<span class="nc" id="L93">                    alreadyBrokenRight = true;</span>
                 }
-<span class="fc bfc" id="L105" title="All 4 branches covered.">                if(startX - (32*i) == objectX &amp;&amp; startY == objectY){</span>
-<span class="fc" id="L106">                        alreadyBrokenLeft = true;</span>
+<span class="fc bfc" id="L95" title="All 4 branches covered.">                if(startX - (32*i) == objectX &amp;&amp; startY == objectY){</span>
+<span class="fc" id="L96">                        alreadyBrokenLeft = true;</span>
                 }
             }
         
         
-<span class="fc bfc" id="L111" title="All 2 branches covered.">            for(int j=0; j &lt; this.broken.size(); j++){</span>
-<span class="fc" id="L112">                objectY = this.broken.get(j).getY();</span>
-<span class="fc" id="L113">                objectX = this.broken.get(j).getX();</span>
-<span class="pc bpc" id="L114" title="3 of 6 branches missed.">                if(startY + (32*i) == objectY &amp;&amp; startX == objectX &amp;&amp; !alreadyBrokenDown){</span>
-<span class="nc" id="L115">                    this.broken.remove(broken.get(j));</span>
-<span class="nc" id="L116">                    alreadyBrokenDown = true;</span>
-<span class="nc" id="L117">                    j=-1;</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">            for(int j=0; j &lt; this.broken.size(); j++){</span>
+<span class="fc" id="L102">                objectY = this.broken.get(j).getY();</span>
+<span class="fc" id="L103">                objectX = this.broken.get(j).getX();</span>
+<span class="pc bpc" id="L104" title="3 of 6 branches missed.">                if(startY + (32*i) == objectY &amp;&amp; startX == objectX &amp;&amp; !alreadyBrokenDown){</span>
+<span class="nc" id="L105">                    this.broken.remove(broken.get(j));</span>
+<span class="nc" id="L106">                    alreadyBrokenDown = true;</span>
+<span class="nc" id="L107">                    j=-1;</span>
                 }
-<span class="pc bpc" id="L119" title="1 of 6 branches missed.">                else if(startY - (32*i) == objectY &amp;&amp; startX == objectX &amp;&amp; !alreadyBrokenUp){</span>
+<span class="pc bpc" id="L109" title="1 of 6 branches missed.">                else if(startY - (32*i) == objectY &amp;&amp; startX == objectX &amp;&amp; !alreadyBrokenUp){</span>
+<span class="fc" id="L110">                    this.broken.remove(broken.get(j));</span>
+<span class="fc" id="L111">                    alreadyBrokenUp = true;</span>
+<span class="fc" id="L112">                    j=-1;</span>
+                }
+<span class="pc bpc" id="L114" title="1 of 6 branches missed.">                else if(startX + (32*i) == objectX &amp;&amp; startY == objectY &amp;&amp; !alreadyBrokenRight){</span>
+<span class="fc" id="L115">                    this.broken.remove(broken.get(j));</span>
+<span class="fc" id="L116">                    alreadyBrokenRight = true;</span>
+<span class="fc" id="L117">                    j=-1;</span>
+                }
+<span class="pc bpc" id="L119" title="1 of 6 branches missed.">                else if(startX - (32*i) == objectX &amp;&amp; startY == objectY &amp;&amp; !alreadyBrokenLeft){</span>
 <span class="fc" id="L120">                    this.broken.remove(broken.get(j));</span>
-<span class="fc" id="L121">                    alreadyBrokenUp = true;</span>
+<span class="fc" id="L121">                    alreadyBrokenLeft = true;</span>
 <span class="fc" id="L122">                    j=-1;</span>
-                }
-<span class="pc bpc" id="L124" title="1 of 6 branches missed.">                else if(startX + (32*i) == objectX &amp;&amp; startY == objectY &amp;&amp; !alreadyBrokenRight){</span>
-<span class="fc" id="L125">                    this.broken.remove(broken.get(j));</span>
-<span class="fc" id="L126">                    alreadyBrokenRight = true;</span>
-<span class="fc" id="L127">                    j=-1;</span>
-                }
-<span class="pc bpc" id="L129" title="1 of 6 branches missed.">                else if(startX - (32*i) == objectX &amp;&amp; startY == objectY &amp;&amp; !alreadyBrokenLeft){</span>
-<span class="fc" id="L130">                    this.broken.remove(broken.get(j));</span>
-<span class="fc" id="L131">                    alreadyBrokenLeft = true;</span>
-<span class="fc" id="L132">                    j=-1;</span>
                 }            
             }
 
-<span class="fc bfc" id="L136" title="All 2 branches covered.">            for(int j=0; j &lt; this.player.size(); j++){</span>
-<span class="fc" id="L137">                objectY = this.player.get(j).getY();</span>
-<span class="fc" id="L138">                objectX = this.player.get(j).getX();</span>
-<span class="pc bpc" id="L139" title="5 of 6 branches missed.">                if(startY + (32*i)-16 == objectY &amp;&amp; startX == objectX &amp;&amp; !alreadyBrokenDown){</span>
-<span class="nc" id="L140">                    this.player.remove(this.player.get(j));</span>
-<span class="nc" id="L141">                    reset = true;</span>
+<span class="fc bfc" id="L126" title="All 2 branches covered.">            for(int j=0; j &lt; this.player.size(); j++){</span>
+<span class="fc" id="L127">                objectY = this.player.get(j).getY();</span>
+<span class="fc" id="L128">                objectX = this.player.get(j).getX();</span>
+<span class="pc bpc" id="L129" title="5 of 6 branches missed.">                if(startY + (32*i)-16 == objectY &amp;&amp; startX == objectX &amp;&amp; !alreadyBrokenDown){</span>
+<span class="nc" id="L130">                    this.player.remove(this.player.get(j));</span>
+<span class="nc" id="L131">                    reset = true;</span>
                 }
-<span class="pc bpc" id="L143" title="3 of 6 branches missed.">                else if(startY - (32*i)-16 == objectY &amp;&amp; startX == objectX &amp;&amp; !alreadyBrokenUp){</span>
-<span class="nc" id="L144">                    this.player.remove(this.player.get(j));</span>
-<span class="nc" id="L145">                    reset = true;</span>
+<span class="pc bpc" id="L133" title="3 of 6 branches missed.">                else if(startY - (32*i)-16 == objectY &amp;&amp; startX == objectX &amp;&amp; !alreadyBrokenUp){</span>
+<span class="nc" id="L134">                    this.player.remove(this.player.get(j));</span>
+<span class="nc" id="L135">                    reset = true;</span>
                 }
-<span class="pc bpc" id="L147" title="5 of 6 branches missed.">                else if(startX + (32*i) == objectX &amp;&amp; startY-16 == objectY &amp;&amp; !alreadyBrokenRight){</span>
-<span class="nc" id="L148">                    this.player.remove(this.player.get(j));</span>
-<span class="nc" id="L149">                    reset = true;</span>
+<span class="pc bpc" id="L137" title="5 of 6 branches missed.">                else if(startX + (32*i) == objectX &amp;&amp; startY-16 == objectY &amp;&amp; !alreadyBrokenRight){</span>
+<span class="nc" id="L138">                    this.player.remove(this.player.get(j));</span>
+<span class="nc" id="L139">                    reset = true;</span>
                 }
-<span class="pc bpc" id="L151" title="3 of 6 branches missed.">                else if(startX - (32*i) == objectX &amp;&amp; startY-16 == objectY &amp;&amp; !alreadyBrokenLeft){</span>
-<span class="nc" id="L152">                    this.player.remove(this.player.get(j));</span>
-<span class="nc" id="L153">                    reset = true;</span>
+<span class="pc bpc" id="L141" title="3 of 6 branches missed.">                else if(startX - (32*i) == objectX &amp;&amp; startY-16 == objectY &amp;&amp; !alreadyBrokenLeft){</span>
+<span class="nc" id="L142">                    this.player.remove(this.player.get(j));</span>
+<span class="nc" id="L143">                    reset = true;</span>
                 }
                     
             }
 
-<span class="fc bfc" id="L158" title="All 2 branches covered.">            for(int j=0; j &lt; this.redEnemy.size(); j++){</span>
-<span class="fc" id="L159">                objectY = this.redEnemy.get(j).getY();</span>
-<span class="fc" id="L160">                objectX = this.redEnemy.get(j).getX();</span>
-<span class="pc bpc" id="L161" title="1 of 6 branches missed.">                if(startY + (32*i)-16 == objectY &amp;&amp; startX == objectX &amp;&amp; !alreadyBrokenDown){</span>
-<span class="fc" id="L162">                    this.redEnemy.remove(this.redEnemy.get(j));</span>
-<span class="fc" id="L163">                    j=-1;</span>
-<span class="pc bpc" id="L164" title="1 of 6 branches missed.">                }else if(startY - (32*i)-16 == objectY &amp;&amp; startX == objectX &amp;&amp; !alreadyBrokenUp){</span>
-<span class="fc" id="L165">                    this.redEnemy.remove(this.redEnemy.get(j));</span>
-<span class="fc" id="L166">                    j=-1;</span>
-<span class="pc bpc" id="L167" title="1 of 6 branches missed.">                }else if(startX + (32*i) == objectX &amp;&amp; startY-16 == objectY &amp;&amp; !alreadyBrokenRight){</span>
-<span class="fc" id="L168">                    this.redEnemy.remove(this.redEnemy.get(j));</span>
-<span class="fc" id="L169">                    j=-1;</span>
-<span class="pc bpc" id="L170" title="1 of 6 branches missed.">                }else if(startX - (32*i) == objectX &amp;&amp; startY-16 == objectY &amp;&amp; !alreadyBrokenLeft){</span>
-<span class="fc" id="L171">                    this.redEnemy.remove(this.redEnemy.get(j));</span>
-<span class="fc" id="L172">                    j=-1;</span>
+<span class="fc bfc" id="L148" title="All 2 branches covered.">            for(int j=0; j &lt; this.redEnemy.size(); j++){</span>
+<span class="fc" id="L149">                objectY = this.redEnemy.get(j).getY();</span>
+<span class="fc" id="L150">                objectX = this.redEnemy.get(j).getX();</span>
+<span class="pc bpc" id="L151" title="1 of 6 branches missed.">                if(startY + (32*i)-16 == objectY &amp;&amp; startX == objectX &amp;&amp; !alreadyBrokenDown){</span>
+<span class="fc" id="L152">                    this.redEnemy.remove(this.redEnemy.get(j));</span>
+<span class="fc" id="L153">                    j=-1;</span>
+<span class="pc bpc" id="L154" title="1 of 6 branches missed.">                }else if(startY - (32*i)-16 == objectY &amp;&amp; startX == objectX &amp;&amp; !alreadyBrokenUp){</span>
+<span class="fc" id="L155">                    this.redEnemy.remove(this.redEnemy.get(j));</span>
+<span class="fc" id="L156">                    j=-1;</span>
+<span class="pc bpc" id="L157" title="1 of 6 branches missed.">                }else if(startX + (32*i) == objectX &amp;&amp; startY-16 == objectY &amp;&amp; !alreadyBrokenRight){</span>
+<span class="fc" id="L158">                    this.redEnemy.remove(this.redEnemy.get(j));</span>
+<span class="fc" id="L159">                    j=-1;</span>
+<span class="pc bpc" id="L160" title="1 of 6 branches missed.">                }else if(startX - (32*i) == objectX &amp;&amp; startY-16 == objectY &amp;&amp; !alreadyBrokenLeft){</span>
+<span class="fc" id="L161">                    this.redEnemy.remove(this.redEnemy.get(j));</span>
+<span class="fc" id="L162">                    j=-1;</span>
                 }
                     
             }
-<span class="fc bfc" id="L176" title="All 2 branches covered.">            for(int j=0; j &lt; this.yellowEnemy.size(); j++){</span>
-<span class="fc" id="L177">                objectY = this.yellowEnemy.get(j).getY();</span>
-<span class="fc" id="L178">                objectX = this.yellowEnemy.get(j).getX();</span>
-<span class="pc bpc" id="L179" title="1 of 6 branches missed.">                if(startY + (32*i)-16 == objectY &amp;&amp; startX == objectX &amp;&amp; !alreadyBrokenDown){</span>
-<span class="fc" id="L180">                    this.yellowEnemy.remove(yellowEnemy.get(j));</span>
-<span class="fc" id="L181">                    j=-1;</span>
+<span class="fc bfc" id="L166" title="All 2 branches covered.">            for(int j=0; j &lt; this.yellowEnemy.size(); j++){</span>
+<span class="fc" id="L167">                objectY = this.yellowEnemy.get(j).getY();</span>
+<span class="fc" id="L168">                objectX = this.yellowEnemy.get(j).getX();</span>
+<span class="pc bpc" id="L169" title="1 of 6 branches missed.">                if(startY + (32*i)-16 == objectY &amp;&amp; startX == objectX &amp;&amp; !alreadyBrokenDown){</span>
+<span class="fc" id="L170">                    this.yellowEnemy.remove(yellowEnemy.get(j));</span>
+<span class="fc" id="L171">                    j=-1;</span>
                 
-<span class="pc bpc" id="L183" title="1 of 6 branches missed.">                }else if(startY - (32*i)-16 == objectY &amp;&amp; startX == objectX &amp;&amp; !alreadyBrokenUp){</span>
-<span class="fc" id="L184">                    this.yellowEnemy.remove(yellowEnemy.get(j));</span>
-<span class="fc" id="L185">                    j=-1;</span>
+<span class="pc bpc" id="L173" title="1 of 6 branches missed.">                }else if(startY - (32*i)-16 == objectY &amp;&amp; startX == objectX &amp;&amp; !alreadyBrokenUp){</span>
+<span class="fc" id="L174">                    this.yellowEnemy.remove(yellowEnemy.get(j));</span>
+<span class="fc" id="L175">                    j=-1;</span>
                 
-<span class="pc bpc" id="L187" title="1 of 6 branches missed.">                }else if(startX + (32*i) == objectX &amp;&amp; startY-16 == objectY &amp;&amp; !alreadyBrokenRight){</span>
-<span class="fc" id="L188">                    this.yellowEnemy.remove(yellowEnemy.get(j));</span>
-<span class="fc" id="L189">                    j=-1;</span>
+<span class="pc bpc" id="L177" title="1 of 6 branches missed.">                }else if(startX + (32*i) == objectX &amp;&amp; startY-16 == objectY &amp;&amp; !alreadyBrokenRight){</span>
+<span class="fc" id="L178">                    this.yellowEnemy.remove(yellowEnemy.get(j));</span>
+<span class="fc" id="L179">                    j=-1;</span>
                 
-<span class="pc bpc" id="L191" title="1 of 6 branches missed.">                }else if(startX - (32*i) == objectX &amp;&amp; startY-16 == objectY &amp;&amp; !alreadyBrokenLeft){</span>
-<span class="fc" id="L192">                    this.yellowEnemy.remove(yellowEnemy.get(j));</span>
-<span class="fc" id="L193">                    j=-1;</span>
+<span class="pc bpc" id="L181" title="1 of 6 branches missed.">                }else if(startX - (32*i) == objectX &amp;&amp; startY-16 == objectY &amp;&amp; !alreadyBrokenLeft){</span>
+<span class="fc" id="L182">                    this.yellowEnemy.remove(yellowEnemy.get(j));</span>
+<span class="fc" id="L183">                    j=-1;</span>
                 }
                     
             }
             
         }
-<span class="fc" id="L199">        alreadyBrokenUp = false;</span>
-<span class="fc" id="L200">        alreadyBrokenRight = false;</span>
-<span class="fc" id="L201">        alreadyBrokenDown = false;</span>
-<span class="fc" id="L202">        alreadyBrokenLeft = false;</span>
-<span class="fc" id="L203">        return reset;</span>
+<span class="fc" id="L189">        alreadyBrokenUp = false;</span>
+<span class="fc" id="L190">        alreadyBrokenRight = false;</span>
+<span class="fc" id="L191">        alreadyBrokenDown = false;</span>
+<span class="fc" id="L192">        alreadyBrokenLeft = false;</span>
+<span class="fc" id="L193">        return reset;</span>
     }
 
     /**
     renders explosion on the screen
      */
     public void renderExplosion(){
-<span class="nc" id="L210">        boolean foundPositive = false;</span>
-<span class="nc" id="L211">        boolean foundNegative = false;</span>
-<span class="nc" id="L212">        int startX = this.x;</span>
-<span class="nc" id="L213">        int startY = this.y;</span>
+<span class="nc" id="L200">        boolean foundPositive = false;</span>
+<span class="nc" id="L201">        boolean foundNegative = false;</span>
+<span class="nc" id="L202">        int startX = this.x;</span>
+<span class="nc" id="L203">        int startY = this.y;</span>
         int objectX;
         int objectY;
         //for vertical
-<span class="nc bnc" id="L217" title="All 2 branches missed.">        for(int i=1; i &lt; 3; i++){</span>
-<span class="nc bnc" id="L218" title="All 2 branches missed.">            for (Wall wall : this.walls) {</span>
-<span class="nc" id="L219">                objectY = wall.getY();</span>
-<span class="nc" id="L220">                objectX = wall.getX();</span>
-<span class="nc bnc" id="L221" title="All 4 branches missed.">                if(startY + (32*i) == objectY &amp;&amp; startX == objectX)</span>
-<span class="nc" id="L222">                    foundPositive = true;</span>
-<span class="nc bnc" id="L223" title="All 4 branches missed.">                if(startY - (32*i) == objectY &amp;&amp; startX == objectX)</span>
-<span class="nc" id="L224">                    foundNegative = true;</span>
-<span class="nc" id="L225">            }</span>
-<span class="nc bnc" id="L226" title="All 2 branches missed.">            for (Broken broken: this.broken) {</span>
-<span class="nc" id="L227">                objectY = broken.getY();</span>
-<span class="nc" id="L228">                objectX = broken.getX();</span>
-<span class="nc bnc" id="L229" title="All 4 branches missed.">                if(startY + (32*i) == objectY &amp;&amp; startX == objectX)</span>
-<span class="nc" id="L230">                    foundPositive = true;</span>
-<span class="nc bnc" id="L231" title="All 4 branches missed.">                if(startY - (32*i) == objectY &amp;&amp; startX == objectX)</span>
-<span class="nc" id="L232">                    foundNegative = true;</span>
-<span class="nc" id="L233">            }</span>
-<span class="nc bnc" id="L234" title="All 2 branches missed.">             if(!foundPositive)</span>
-<span class="nc" id="L235">                 app.image(app.loadImage(&quot;src/main/resources/explosion/vertical.png&quot;), startX,startY +(32*i));</span>
-<span class="nc bnc" id="L236" title="All 2 branches missed.">             if(!foundNegative)</span>
-<span class="nc" id="L237">                app.image(app.loadImage(&quot;src/main/resources/explosion/vertical.png&quot;), startX,startY - (32*i));</span>
+<span class="nc bnc" id="L207" title="All 2 branches missed.">        for(int i=1; i &lt; 3; i++){</span>
+<span class="nc bnc" id="L208" title="All 2 branches missed.">            for (Wall wall : this.walls) {</span>
+<span class="nc" id="L209">                objectY = wall.getY();</span>
+<span class="nc" id="L210">                objectX = wall.getX();</span>
+<span class="nc bnc" id="L211" title="All 4 branches missed.">                if(startY + (32*i) == objectY &amp;&amp; startX == objectX)</span>
+<span class="nc" id="L212">                    foundPositive = true;</span>
+<span class="nc bnc" id="L213" title="All 4 branches missed.">                if(startY - (32*i) == objectY &amp;&amp; startX == objectX)</span>
+<span class="nc" id="L214">                    foundNegative = true;</span>
+<span class="nc" id="L215">            }</span>
+<span class="nc bnc" id="L216" title="All 2 branches missed.">            for (Broken broken: this.broken) {</span>
+<span class="nc" id="L217">                objectY = broken.getY();</span>
+<span class="nc" id="L218">                objectX = broken.getX();</span>
+<span class="nc bnc" id="L219" title="All 4 branches missed.">                if(startY + (32*i) == objectY &amp;&amp; startX == objectX)</span>
+<span class="nc" id="L220">                    foundPositive = true;</span>
+<span class="nc bnc" id="L221" title="All 4 branches missed.">                if(startY - (32*i) == objectY &amp;&amp; startX == objectX)</span>
+<span class="nc" id="L222">                    foundNegative = true;</span>
+<span class="nc" id="L223">            }</span>
+<span class="nc bnc" id="L224" title="All 2 branches missed.">             if(!foundPositive)</span>
+<span class="nc" id="L225">                 app.image(app.loadImage(&quot;src/main/resources/explosion/vertical.png&quot;), startX,startY +(32*i));</span>
+<span class="nc bnc" id="L226" title="All 2 branches missed.">             if(!foundNegative)</span>
+<span class="nc" id="L227">                app.image(app.loadImage(&quot;src/main/resources/explosion/vertical.png&quot;), startX,startY - (32*i));</span>
         }
 
-<span class="nc" id="L240">        foundPositive = false;</span>
-<span class="nc" id="L241">        foundNegative = false;</span>
-<span class="nc bnc" id="L242" title="All 2 branches missed.">        for(int i=1; i &lt; 3; i++){</span>
-<span class="nc bnc" id="L243" title="All 2 branches missed.">            for (Wall wall : this.walls) {</span>
-<span class="nc" id="L244">                objectX = wall.getX();</span>
-<span class="nc" id="L245">                objectY = wall.getY();</span>
-<span class="nc bnc" id="L246" title="All 4 branches missed.">                if(startX + (32*i) == objectX &amp;&amp; startY == objectY)</span>
-<span class="nc" id="L247">                    foundPositive = true;</span>
-<span class="nc bnc" id="L248" title="All 4 branches missed.">                if(startX - (32*i) == objectX &amp;&amp; startY == objectY)</span>
-<span class="nc" id="L249">                    foundNegative = true;</span>
-<span class="nc" id="L250">            }</span>
-<span class="nc bnc" id="L251" title="All 2 branches missed.">            for (Broken broken: this.broken) {</span>
-<span class="nc" id="L252">                objectX = broken.getX();</span>
-<span class="nc" id="L253">                objectY = broken.getY();</span>
-<span class="nc bnc" id="L254" title="All 4 branches missed.">                if(startX + (32*i) == objectX &amp;&amp; startY == objectY)</span>
-<span class="nc" id="L255">                    foundPositive = true;</span>
-<span class="nc bnc" id="L256" title="All 4 branches missed.">                if(startX - (32*i) == objectX &amp;&amp; startY == objectY)</span>
-<span class="nc" id="L257">                    foundNegative = true;</span>
-<span class="nc" id="L258">            }</span>
-<span class="nc bnc" id="L259" title="All 2 branches missed.">            if(!foundPositive)</span>
-<span class="nc" id="L260">                app.image(app.loadImage(&quot;src/main/resources/explosion/horizontal.png&quot;),startX +(32*i),startY);</span>
-<span class="nc bnc" id="L261" title="All 2 branches missed.">            if(!foundNegative)</span>
-<span class="nc" id="L262">                app.image(app.loadImage(&quot;src/main/resources/explosion/horizontal.png&quot;), startX - (32*i),startY);</span>
+<span class="nc" id="L230">        foundPositive = false;</span>
+<span class="nc" id="L231">        foundNegative = false;</span>
+<span class="nc bnc" id="L232" title="All 2 branches missed.">        for(int i=1; i &lt; 3; i++){</span>
+<span class="nc bnc" id="L233" title="All 2 branches missed.">            for (Wall wall : this.walls) {</span>
+<span class="nc" id="L234">                objectX = wall.getX();</span>
+<span class="nc" id="L235">                objectY = wall.getY();</span>
+<span class="nc bnc" id="L236" title="All 4 branches missed.">                if(startX + (32*i) == objectX &amp;&amp; startY == objectY)</span>
+<span class="nc" id="L237">                    foundPositive = true;</span>
+<span class="nc bnc" id="L238" title="All 4 branches missed.">                if(startX - (32*i) == objectX &amp;&amp; startY == objectY)</span>
+<span class="nc" id="L239">                    foundNegative = true;</span>
+<span class="nc" id="L240">            }</span>
+<span class="nc bnc" id="L241" title="All 2 branches missed.">            for (Broken broken: this.broken) {</span>
+<span class="nc" id="L242">                objectX = broken.getX();</span>
+<span class="nc" id="L243">                objectY = broken.getY();</span>
+<span class="nc bnc" id="L244" title="All 4 branches missed.">                if(startX + (32*i) == objectX &amp;&amp; startY == objectY)</span>
+<span class="nc" id="L245">                    foundPositive = true;</span>
+<span class="nc bnc" id="L246" title="All 4 branches missed.">                if(startX - (32*i) == objectX &amp;&amp; startY == objectY)</span>
+<span class="nc" id="L247">                    foundNegative = true;</span>
+<span class="nc" id="L248">            }</span>
+<span class="nc bnc" id="L249" title="All 2 branches missed.">            if(!foundPositive)</span>
+<span class="nc" id="L250">                app.image(app.loadImage(&quot;src/main/resources/explosion/horizontal.png&quot;),startX +(32*i),startY);</span>
+<span class="nc bnc" id="L251" title="All 2 branches missed.">            if(!foundNegative)</span>
+<span class="nc" id="L252">                app.image(app.loadImage(&quot;src/main/resources/explosion/horizontal.png&quot;), startX - (32*i),startY);</span>
         }
        
-<span class="nc" id="L265">    }</span>
+<span class="nc" id="L255">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
