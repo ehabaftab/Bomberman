@@ -37,7 +37,6 @@ public class App extends PApplet {
     private ArrayList<Wall> walls;
     private ArrayList<Broken> broken;
     private ArrayList<Goal> goal;
-    private ArrayList tempList;
     String levelOneFile;
     String levelTwoFile;
     int currentLevel = 1;
