@@ -89,8 +89,8 @@ public abstract class MovingObject extends GameObject {
 <span class="fc bfc" id="L89" title="All 2 branches covered.">            for (Broken broken : this.broken) {</span>
 <span class="fc" id="L90">                wallX = broken.getX();</span>
 <span class="fc" id="L91">                wallY = broken.getY();</span>
-<span class="pc bpc" id="L92" title="1 of 4 branches missed.">                if(this.x - 32 == wallX &amp;&amp; this.y+16 == wallY)</span>
-<span class="nc" id="L93">                    collision = true;</span>
+<span class="fc bfc" id="L92" title="All 4 branches covered.">                if(this.x - 32 == wallX &amp;&amp; this.y+16 == wallY)</span>
+<span class="fc" id="L93">                    collision = true;</span>
 <span class="fc" id="L94">            }</span>
         }
 <span class="fc bfc" id="L96" title="All 2 branches covered.">        if(!collision){</span>

@@ -71,54 +71,54 @@ public class App extends PApplet {
 <span class="fc" id="L71">    }</span>
 
     public void settings() {
-<span class="nc" id="L74">        size(WIDTH, HEIGHT);</span>
-<span class="nc" id="L75">    }</span>
+<span class="fc" id="L74">        size(WIDTH, HEIGHT);</span>
+<span class="fc" id="L75">    }</span>
 
     /**
     Sets up the screen and level using the config file
      */
     public void setup() {
-<span class="nc" id="L81">        frameRate(FPS);</span>
+<span class="fc" id="L81">        frameRate(FPS);</span>
         
-<span class="nc" id="L83">        this.emptyImage = this.loadImage(&quot;src/main/resources/empty/empty.png&quot;);</span>
-<span class="nc" id="L84">        this.playerImage = this.loadImage(&quot;src/main/resources/player/player1.png&quot;);</span>
-<span class="nc" id="L85">        this.redEnemyImage = this.loadImage(&quot;src/main/resources/red_enemy/red_down1.png&quot;);</span>
-<span class="nc" id="L86">        this.yellowEnemyImage = this.loadImage(&quot;src/main/resources/yellow_enemy/yellow_down1.png&quot;);</span>
-<span class="nc" id="L87">        this.bombImage = this.loadImage(&quot;src/main/resources/bomb/bomb.png&quot;);</span>
-<span class="nc" id="L88">        this.wallImage = this.loadImage(&quot;src/main/resources/wall/solid.png&quot;);</span>
-<span class="nc" id="L89">        this.brokenImage = this.loadImage(&quot;src/main/resources/broken/broken.png&quot;);</span>
-<span class="nc" id="L90">        this.goalImage = this.loadImage(&quot;src/main/resources/goal/goal.png&quot;);</span>
-<span class="nc" id="L91">        this.timerFont = createFont(&quot;src/main/resources/PressStart2P-Regular.ttf&quot;,20);</span>
-<span class="nc" id="L92">        this.gameOverFont = createFont(&quot;src/main/resources/PressStart2P-Regular.ttf&quot;,25);</span>
-<span class="nc" id="L93">        this.timerIcon = this.loadImage(&quot;src/main/resources/icons/clock.png&quot;);</span>
-<span class="nc" id="L94">        this.livesIcon = this.loadImage(&quot;src/main/resources/icons/player.png&quot;);</span>
+<span class="fc" id="L83">        this.emptyImage = this.loadImage(&quot;src/main/resources/empty/empty.png&quot;);</span>
+<span class="fc" id="L84">        this.playerImage = this.loadImage(&quot;src/main/resources/player/player1.png&quot;);</span>
+<span class="fc" id="L85">        this.redEnemyImage = this.loadImage(&quot;src/main/resources/red_enemy/red_down1.png&quot;);</span>
+<span class="fc" id="L86">        this.yellowEnemyImage = this.loadImage(&quot;src/main/resources/yellow_enemy/yellow_down1.png&quot;);</span>
+<span class="fc" id="L87">        this.bombImage = this.loadImage(&quot;src/main/resources/bomb/bomb.png&quot;);</span>
+<span class="fc" id="L88">        this.wallImage = this.loadImage(&quot;src/main/resources/wall/solid.png&quot;);</span>
+<span class="fc" id="L89">        this.brokenImage = this.loadImage(&quot;src/main/resources/broken/broken.png&quot;);</span>
+<span class="fc" id="L90">        this.goalImage = this.loadImage(&quot;src/main/resources/goal/goal.png&quot;);</span>
+<span class="fc" id="L91">        this.timerFont = createFont(&quot;src/main/resources/PressStart2P-Regular.ttf&quot;,20);</span>
+<span class="fc" id="L92">        this.gameOverFont = createFont(&quot;src/main/resources/PressStart2P-Regular.ttf&quot;,25);</span>
+<span class="fc" id="L93">        this.timerIcon = this.loadImage(&quot;src/main/resources/icons/clock.png&quot;);</span>
+<span class="fc" id="L94">        this.livesIcon = this.loadImage(&quot;src/main/resources/icons/player.png&quot;);</span>
 
-<span class="nc" id="L96">        StringBuilder s = new StringBuilder();</span>
+<span class="fc" id="L96">        StringBuilder s = new StringBuilder();</span>
         try{
-<span class="nc" id="L98">            File jsonFile = new File(&quot;config.json&quot;);</span>
-<span class="nc" id="L99">            Scanner jsonReader = new Scanner(jsonFile);</span>
-<span class="nc" id="L100">            int counter = 0;</span>
-<span class="nc bnc" id="L101" title="All 2 branches missed.">            while(jsonReader.hasNextLine()){</span>
-<span class="nc" id="L102">                s.append(jsonReader.nextLine());</span>
+<span class="fc" id="L98">            File jsonFile = new File(&quot;config.json&quot;);</span>
+<span class="fc" id="L99">            Scanner jsonReader = new Scanner(jsonFile);</span>
+<span class="fc" id="L100">            int counter = 0;</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">            while(jsonReader.hasNextLine()){</span>
+<span class="fc" id="L102">                s.append(jsonReader.nextLine());</span>
             }
-<span class="nc" id="L104">            JSONObject config = JSONObject.parse(s.toString());</span>
-<span class="nc" id="L105">            lives = config.getInt(&quot;lives&quot;);</span>
-<span class="nc" id="L106">            levelOneFile = config.getJSONArray(&quot;levels&quot;).getJSONObject(0).getString(&quot;path&quot;);</span>
-<span class="nc" id="L107">            levelOneTime = config.getJSONArray(&quot;levels&quot;).getJSONObject(0).getInt(&quot;time&quot;);</span>
-<span class="nc" id="L108">            levelTwoFile = config.getJSONArray(&quot;levels&quot;).getJSONObject(1).getString(&quot;path&quot;);</span>
-<span class="nc" id="L109">            levelTwoTime = config.getJSONArray(&quot;levels&quot;).getJSONObject(1).getInt(&quot;time&quot;);</span>
-<span class="nc" id="L110">            jsonReader.close();</span>
+<span class="fc" id="L104">            JSONObject config = JSONObject.parse(s.toString());</span>
+<span class="fc" id="L105">            lives = config.getInt(&quot;lives&quot;);</span>
+<span class="fc" id="L106">            levelOneFile = config.getJSONArray(&quot;levels&quot;).getJSONObject(0).getString(&quot;path&quot;);</span>
+<span class="fc" id="L107">            levelOneTime = config.getJSONArray(&quot;levels&quot;).getJSONObject(0).getInt(&quot;time&quot;);</span>
+<span class="fc" id="L108">            levelTwoFile = config.getJSONArray(&quot;levels&quot;).getJSONObject(1).getString(&quot;path&quot;);</span>
+<span class="fc" id="L109">            levelTwoTime = config.getJSONArray(&quot;levels&quot;).getJSONObject(1).getInt(&quot;time&quot;);</span>
+<span class="fc" id="L110">            jsonReader.close();</span>
 <span class="nc" id="L111">        } catch (FileNotFoundException e) {</span>
 <span class="nc" id="L112">            println(&quot;An error occurred.&quot;);</span>
-<span class="nc" id="L113">        }</span>
-<span class="nc" id="L114">        loadLevel(currentLevel);</span>
-<span class="nc" id="L115">    }</span>
+<span class="fc" id="L113">        }</span>
+<span class="fc" id="L114">        loadLevel(currentLevel);</span>
+<span class="fc" id="L115">    }</span>
 
     /**
     draws on screen
      */
     public void draw() {
-<span class="nc bnc" id="L121" title="All 2 branches missed.">        if(levelFinished){</span>
+<span class="pc bpc" id="L121" title="1 of 2 branches missed.">        if(levelFinished){</span>
             
 <span class="nc bnc" id="L123" title="All 2 branches missed.">            if(currentLevel == 2){</span>
 <span class="nc" id="L124">                gameOver = true;</span>
@@ -132,72 +132,72 @@ public class App extends PApplet {
 <span class="nc" id="L132">            levelFinished = false;</span>
         }
 
-<span class="nc bnc" id="L135" title="All 2 branches missed.">        if(!gameWon){</span>
-<span class="nc bnc" id="L136" title="All 4 branches missed.">            if (lives==0 || levelTime==0) {</span>
+<span class="pc bpc" id="L135" title="1 of 2 branches missed.">        if(!gameWon){</span>
+<span class="pc bpc" id="L136" title="2 of 4 branches missed.">            if (lives==0 || levelTime==0) {</span>
 <span class="nc" id="L137">                gameOver = true;</span>
 <span class="nc" id="L138">                currentLevel = 1;</span>
 <span class="nc" id="L139">                gameOverScreen();</span>
             }
         }
         //if the game is not over the game keeps running
-<span class="nc bnc" id="L143" title="All 2 branches missed.">        if(!gameOver){</span>
-<span class="nc" id="L144">            counter++;</span>
-<span class="nc" id="L145">            loadHeader();</span>
-<span class="nc bnc" id="L146" title="All 2 branches missed.">            if(bombTimer == 0){</span>
+<span class="pc bpc" id="L143" title="1 of 2 branches missed.">        if(!gameOver){</span>
+<span class="fc" id="L144">            counter++;</span>
+<span class="fc" id="L145">            loadHeader();</span>
+<span class="pc bpc" id="L146" title="1 of 2 branches missed.">            if(bombTimer == 0){</span>
 <span class="nc bnc" id="L147" title="All 2 branches missed.">                for(Bomb bomb : this.bomb){</span>
 <span class="nc" id="L148">                    bomb.tick();</span>
 <span class="nc" id="L149">                }   </span>
 <span class="nc" id="L150">                bombTimer = 15;</span>
             }
-<span class="nc bnc" id="L152" title="All 2 branches missed.">            if(redEnemyTimer == 0){</span>
+<span class="pc bpc" id="L152" title="1 of 2 branches missed.">            if(redEnemyTimer == 0){</span>
 <span class="nc bnc" id="L153" title="All 2 branches missed.">                for (RedEnemy redEnemy : this.redEnemy){</span>
 <span class="nc" id="L154">                    redEnemy.tick();</span>
 <span class="nc" id="L155">                }</span>
 <span class="nc" id="L156">                redEnemyTimer=15;</span>
             }
-<span class="nc bnc" id="L158" title="All 2 branches missed.">            if(yellowEnemyTimer == 0){</span>
+<span class="pc bpc" id="L158" title="1 of 2 branches missed.">            if(yellowEnemyTimer == 0){</span>
 <span class="nc bnc" id="L159" title="All 2 branches missed.">                for (YellowEnemy yellowEnemy : this.yellowEnemy){</span>
 <span class="nc" id="L160">                    yellowEnemy.tick();</span>
 <span class="nc" id="L161">                }</span>
 <span class="nc" id="L162">                yellowEnemyTimer=15;</span>
             }
-<span class="nc bnc" id="L164" title="All 2 branches missed.">            if (playerTimer == 0){</span>
+<span class="pc bpc" id="L164" title="1 of 2 branches missed.">            if (playerTimer == 0){</span>
 <span class="nc bnc" id="L165" title="All 2 branches missed.">                for (Player player : this.player) {</span>
 <span class="nc" id="L166">                    player.tick();</span>
 <span class="nc" id="L167">                }</span>
 <span class="nc" id="L168">                playerTimer = 15;</span>
             }
-<span class="nc bnc" id="L170" title="All 2 branches missed.">            for (Empty empty : this.empty){</span>
-<span class="nc" id="L171">                empty.draw(this);</span>
-<span class="nc" id="L172">            }</span>
-<span class="nc bnc" id="L173" title="All 2 branches missed.">            for (Wall wall : this.walls) {</span>
-<span class="nc" id="L174">                wall.draw(this);</span>
-<span class="nc" id="L175">            }</span>
-<span class="nc bnc" id="L176" title="All 2 branches missed.">            for (Broken broken : this.broken) {</span>
-<span class="nc" id="L177">                broken.draw(this);</span>
-<span class="nc" id="L178">            }</span>
-<span class="nc bnc" id="L179" title="All 2 branches missed.">            for (Goal goal : this.goal) {</span>
-<span class="nc" id="L180">                goal.draw(this);</span>
-<span class="nc" id="L181">            }</span>
+<span class="fc bfc" id="L170" title="All 2 branches covered.">            for (Empty empty : this.empty){</span>
+<span class="fc" id="L171">                empty.draw(this);</span>
+<span class="fc" id="L172">            }</span>
+<span class="fc bfc" id="L173" title="All 2 branches covered.">            for (Wall wall : this.walls) {</span>
+<span class="fc" id="L174">                wall.draw(this);</span>
+<span class="fc" id="L175">            }</span>
+<span class="fc bfc" id="L176" title="All 2 branches covered.">            for (Broken broken : this.broken) {</span>
+<span class="fc" id="L177">                broken.draw(this);</span>
+<span class="fc" id="L178">            }</span>
+<span class="fc bfc" id="L179" title="All 2 branches covered.">            for (Goal goal : this.goal) {</span>
+<span class="fc" id="L180">                goal.draw(this);</span>
+<span class="fc" id="L181">            }</span>
             
-<span class="nc bnc" id="L183" title="All 2 branches missed.">            for (Player player : this.player) {</span>
-<span class="nc" id="L184">                player.draw(this);</span>
-<span class="nc" id="L185">            }</span>
-<span class="nc bnc" id="L186" title="All 2 branches missed.">            for (RedEnemy redEnemy : this.redEnemy){</span>
-<span class="nc" id="L187">                redEnemy.draw(this);</span>
-<span class="nc bnc" id="L188" title="All 2 branches missed.">                if(redEnemy.meetPlayer() == true){</span>
+<span class="fc bfc" id="L183" title="All 2 branches covered.">            for (Player player : this.player) {</span>
+<span class="fc" id="L184">                player.draw(this);</span>
+<span class="fc" id="L185">            }</span>
+<span class="fc bfc" id="L186" title="All 2 branches covered.">            for (RedEnemy redEnemy : this.redEnemy){</span>
+<span class="fc" id="L187">                redEnemy.draw(this);</span>
+<span class="pc bpc" id="L188" title="1 of 2 branches missed.">                if(redEnemy.meetPlayer() == true){</span>
 <span class="nc" id="L189">                    this.bomb.clear();</span>
 <span class="nc" id="L190">                    reset = true;</span>
                 }
-<span class="nc" id="L192">            }</span>
-<span class="nc bnc" id="L193" title="All 2 branches missed.">            for (YellowEnemy yellowEnemy : this.yellowEnemy){</span>
-<span class="nc" id="L194">                yellowEnemy.draw(this);</span>
-<span class="nc bnc" id="L195" title="All 2 branches missed.">                if(yellowEnemy.meetPlayer() == true){</span>
+<span class="fc" id="L192">            }</span>
+<span class="fc bfc" id="L193" title="All 2 branches covered.">            for (YellowEnemy yellowEnemy : this.yellowEnemy){</span>
+<span class="fc" id="L194">                yellowEnemy.draw(this);</span>
+<span class="pc bpc" id="L195" title="1 of 2 branches missed.">                if(yellowEnemy.meetPlayer() == true){</span>
 <span class="nc" id="L196">                    this.bomb.clear();</span>
 <span class="nc" id="L197">                    reset = true;</span>
                 }
-<span class="nc" id="L199">            }</span>
-<span class="nc bnc" id="L200" title="All 2 branches missed.">            for(Bomb bomb : this.bomb){</span>
+<span class="fc" id="L199">            }</span>
+<span class="pc bpc" id="L200" title="1 of 2 branches missed.">            for(Bomb bomb : this.bomb){</span>
 <span class="nc" id="L201">                bomb.draw(this);</span>
                 
 <span class="nc bnc" id="L203" title="All 2 branches missed.">                if(bomb.detonateCheck()== true){</span>
@@ -209,32 +209,32 @@ public class App extends PApplet {
                 }    
 <span class="nc" id="L210">            }</span>
 
-<span class="nc bnc" id="L212" title="All 2 branches missed.">            if(explosion){</span>
+<span class="pc bpc" id="L212" title="1 of 2 branches missed.">            if(explosion){</span>
 <span class="nc" id="L213">                bombToRemove.renderExplosion();</span>
 <span class="nc bnc" id="L214" title="All 2 branches missed.">                if(explosionTimer==0){</span>
 <span class="nc" id="L215">                    this.bombRemove = true;</span>
 <span class="nc" id="L216">                    explosion = false;  </span>
                 }
             }
-<span class="nc bnc" id="L219" title="All 2 branches missed.">            if(this.bombRemove){</span>
+<span class="pc bpc" id="L219" title="1 of 2 branches missed.">            if(this.bombRemove){</span>
 <span class="nc" id="L220">                removeBomb(bombToRemove);</span>
             }
 
-<span class="nc bnc" id="L223" title="All 2 branches missed.">            if(reset){</span>
+<span class="pc bpc" id="L223" title="1 of 2 branches missed.">            if(reset){</span>
 <span class="nc" id="L224">                reset();</span>
             }
 
-<span class="nc bnc" id="L227" title="All 2 branches missed.">            if(counter == 60){</span>
+<span class="pc bpc" id="L227" title="1 of 2 branches missed.">            if(counter == 60){</span>
 <span class="nc" id="L228">                levelTime -= 1;</span>
 <span class="nc" id="L229">                counter = 0;</span>
             }
-<span class="nc" id="L231">            bombTimer -= 1;</span>
-<span class="nc" id="L232">            playerTimer -= 1;</span>
-<span class="nc" id="L233">            redEnemyTimer -= 1;</span>
-<span class="nc" id="L234">            yellowEnemyTimer -= 1;</span>
-<span class="nc" id="L235">            explosionTimer -= 1;</span>
+<span class="fc" id="L231">            bombTimer -= 1;</span>
+<span class="fc" id="L232">            playerTimer -= 1;</span>
+<span class="fc" id="L233">            redEnemyTimer -= 1;</span>
+<span class="fc" id="L234">            yellowEnemyTimer -= 1;</span>
+<span class="fc" id="L235">            explosionTimer -= 1;</span>
         }
-<span class="nc" id="L237">    }</span>
+<span class="fc" id="L237">    }</span>
     /**
     to control the player using the arrow keys
      */
@@ -294,39 +294,39 @@ public class App extends PApplet {
     adds bomb on clicking spacebar
      */
     public void addBomb(){
-<span class="nc" id="L297">        int xValue = 0;</span>
-<span class="nc" id="L298">        int yValue = 0;</span>
-<span class="nc bnc" id="L299" title="All 2 branches missed.">        for (Player player : this.player){</span>
-<span class="nc" id="L300">            xValue = player.getX();</span>
-<span class="nc" id="L301">            yValue = player.getY();</span>
-<span class="nc" id="L302">        }</span>
+<span class="fc" id="L297">        int xValue = 0;</span>
+<span class="fc" id="L298">        int yValue = 0;</span>
+<span class="fc bfc" id="L299" title="All 2 branches covered.">        for (Player player : this.player){</span>
+<span class="fc" id="L300">            xValue = player.getX();</span>
+<span class="fc" id="L301">            yValue = player.getY();</span>
+<span class="fc" id="L302">        }</span>
         // if(this.bomb.size() == 0){
-<span class="nc" id="L304">            this.bomb.add(new Bomb(this,xValue,yValue+16,bombImage,broken,walls,player,redEnemy,yellowEnemy));</span>
-<span class="nc" id="L305">            bombTimer = 15;</span>
+<span class="fc" id="L304">            this.bomb.add(new Bomb(this,xValue,yValue+16,bombImage,broken,walls,player,redEnemy,yellowEnemy));</span>
+<span class="fc" id="L305">            bombTimer = 15;</span>
         // 
-<span class="nc" id="L307">    }</span>
+<span class="fc" id="L307">    }</span>
 
     /**
     resets the level if the user dies
      */
     public void reset(){
-<span class="nc bnc" id="L313" title="All 2 branches missed.">        if(!gameOver){</span>
-<span class="nc" id="L314">            lives -= 1;</span>
-<span class="nc bnc" id="L315" title="All 2 branches missed.">            if(lives&lt;0)</span>
+<span class="pc bpc" id="L313" title="1 of 2 branches missed.">        if(!gameOver){</span>
+<span class="fc" id="L314">            lives -= 1;</span>
+<span class="pc bpc" id="L315" title="1 of 2 branches missed.">            if(lives&lt;0)</span>
 <span class="nc" id="L316">                lives = 0;</span>
         }
-<span class="nc" id="L318">        reset = false;</span>
-<span class="nc" id="L319">        this.bomb.clear();</span>
-<span class="nc" id="L320">        this.walls.clear();</span>
-<span class="nc" id="L321">        this.empty.clear();</span>
-<span class="nc" id="L322">        this.broken.clear();</span>
-<span class="nc" id="L323">        this.player.clear();</span>
-<span class="nc" id="L324">        this.redEnemy.clear();</span>
-<span class="nc" id="L325">        this.yellowEnemy.clear();</span>
-<span class="nc" id="L326">        this.goal.clear();</span>
-<span class="nc bnc" id="L327" title="All 4 branches missed.">        if(!gameOver &amp;&amp; !levelFinished)</span>
-<span class="nc" id="L328">            loadLevel(currentLevel);</span>
-<span class="nc" id="L329">    }</span>
+<span class="fc" id="L318">        reset = false;</span>
+<span class="fc" id="L319">        this.bomb.clear();</span>
+<span class="fc" id="L320">        this.walls.clear();</span>
+<span class="fc" id="L321">        this.empty.clear();</span>
+<span class="fc" id="L322">        this.broken.clear();</span>
+<span class="fc" id="L323">        this.player.clear();</span>
+<span class="fc" id="L324">        this.redEnemy.clear();</span>
+<span class="fc" id="L325">        this.yellowEnemy.clear();</span>
+<span class="fc" id="L326">        this.goal.clear();</span>
+<span class="pc bpc" id="L327" title="2 of 4 branches missed.">        if(!gameOver &amp;&amp; !levelFinished)</span>
+<span class="fc" id="L328">            loadLevel(currentLevel);</span>
+<span class="fc" id="L329">    }</span>
 
     /**
     renders the game over screen when the timer ends or player runs out of lives
@@ -347,62 +347,62 @@ public class App extends PApplet {
     loads header containing lives of the player and the timer
      */
     public void loadHeader(){
-<span class="nc" id="L350">        background(239, 129, 0);</span>
-<span class="nc" id="L351">        textFont(timerFont);</span>
-<span class="nc" id="L352">        fill(0);</span>
-<span class="nc" id="L353">        text(lives,175,45);</span>
-<span class="nc" id="L354">        text(levelTime,295,45);</span>
-<span class="nc" id="L355">        this.image(livesIcon, 135,18);</span>
-<span class="nc" id="L356">        this.image(timerIcon, 255,18);</span>
-<span class="nc" id="L357">    }</span>
+<span class="fc" id="L350">        background(239, 129, 0);</span>
+<span class="fc" id="L351">        textFont(timerFont);</span>
+<span class="fc" id="L352">        fill(0);</span>
+<span class="fc" id="L353">        text(lives,175,45);</span>
+<span class="fc" id="L354">        text(levelTime,295,45);</span>
+<span class="fc" id="L355">        this.image(livesIcon, 135,18);</span>
+<span class="fc" id="L356">        this.image(timerIcon, 255,18);</span>
+<span class="fc" id="L357">    }</span>
 
     /**
     loads level
      */
     public void loadLevel(int num){
-<span class="nc" id="L363">        int x = 0;</span>
-<span class="nc" id="L364">        int y = 64;</span>
+<span class="fc" id="L363">        int x = 0;</span>
+<span class="fc" id="L364">        int y = 64;</span>
         File myObj;
         try {
-<span class="nc bnc" id="L367" title="All 2 branches missed.">            if(num == 1){</span>
-<span class="nc" id="L368">                myObj = new File(levelOneFile);</span>
-<span class="nc" id="L369">                levelTime = levelOneTime;</span>
+<span class="pc bpc" id="L367" title="1 of 2 branches missed.">            if(num == 1){</span>
+<span class="fc" id="L368">                myObj = new File(levelOneFile);</span>
+<span class="fc" id="L369">                levelTime = levelOneTime;</span>
             }else{
 <span class="nc" id="L371">                myObj = new File(levelTwoFile);</span>
 <span class="nc" id="L372">                levelTime = levelTwoTime;</span>
             }
-<span class="nc" id="L374">            Scanner myReader = new Scanner(myObj);</span>
-<span class="nc bnc" id="L375" title="All 2 branches missed.">            while (myReader.hasNextLine()) {</span>
-<span class="nc" id="L376">                String data = myReader.nextLine();</span>
-<span class="nc bnc" id="L377" title="All 2 branches missed.">                for(int i=0; i&lt;data.length(); i++) {</span>
-<span class="nc bnc" id="L378" title="All 2 branches missed.">                    if(data.charAt(i) == 'W'){</span>
-<span class="nc" id="L379">                        this.walls.add(new Wall(x+(32*i), y,wallImage));</span>
-<span class="nc bnc" id="L380" title="All 2 branches missed.">                    }else if(data.charAt(i) == 'B'){</span>
-<span class="nc" id="L381">                        this.broken.add(new Broken(x+(32*i), y,brokenImage));</span>
-<span class="nc" id="L382">                        this.empty.add(new Empty(x+(32*i), y,emptyImage));</span>
-<span class="nc bnc" id="L383" title="All 2 branches missed.">                    }else if(data.charAt(i) == 'G'){</span>
-<span class="nc" id="L384">                        this.goal.add(new Goal(x+(32*i), y,goalImage));</span>
-<span class="nc bnc" id="L385" title="All 2 branches missed.">                    }else if(data.charAt(i) == 'P'){</span>
-<span class="nc" id="L386">                        this.player.add(new Player(this,x+(32*i), y-16,playerImage,walls,broken,goal));</span>
-<span class="nc" id="L387">                        this.empty.add(new Empty(x+(32*i), y,emptyImage));</span>
-<span class="nc bnc" id="L388" title="All 2 branches missed.">                    }else if(data.charAt(i) == 'Y'){</span>
-<span class="nc" id="L389">                        this.yellowEnemy.add(new YellowEnemy(this,x+(32*i), y-16,yellowEnemyImage,walls,broken,player));</span>
-<span class="nc" id="L390">                        this.empty.add(new Empty(x+(32*i), y,emptyImage));</span>
-<span class="nc bnc" id="L391" title="All 2 branches missed.">                    }else if(data.charAt(i) == 'R'){</span>
-<span class="nc" id="L392">                        this.redEnemy.add(new RedEnemy(this,x+(32*i), y-16,redEnemyImage,walls,broken,player));</span>
-<span class="nc" id="L393">                        this.empty.add(new Empty(x+(32*i), y,emptyImage));</span>
+<span class="fc" id="L374">            Scanner myReader = new Scanner(myObj);</span>
+<span class="fc bfc" id="L375" title="All 2 branches covered.">            while (myReader.hasNextLine()) {</span>
+<span class="fc" id="L376">                String data = myReader.nextLine();</span>
+<span class="fc bfc" id="L377" title="All 2 branches covered.">                for(int i=0; i&lt;data.length(); i++) {</span>
+<span class="fc bfc" id="L378" title="All 2 branches covered.">                    if(data.charAt(i) == 'W'){</span>
+<span class="fc" id="L379">                        this.walls.add(new Wall(x+(32*i), y,wallImage));</span>
+<span class="fc bfc" id="L380" title="All 2 branches covered.">                    }else if(data.charAt(i) == 'B'){</span>
+<span class="fc" id="L381">                        this.broken.add(new Broken(x+(32*i), y,brokenImage));</span>
+<span class="fc" id="L382">                        this.empty.add(new Empty(x+(32*i), y,emptyImage));</span>
+<span class="fc bfc" id="L383" title="All 2 branches covered.">                    }else if(data.charAt(i) == 'G'){</span>
+<span class="fc" id="L384">                        this.goal.add(new Goal(x+(32*i), y,goalImage));</span>
+<span class="fc bfc" id="L385" title="All 2 branches covered.">                    }else if(data.charAt(i) == 'P'){</span>
+<span class="fc" id="L386">                        this.player.add(new Player(this,x+(32*i), y-16,playerImage,walls,broken,goal));</span>
+<span class="fc" id="L387">                        this.empty.add(new Empty(x+(32*i), y,emptyImage));</span>
+<span class="fc bfc" id="L388" title="All 2 branches covered.">                    }else if(data.charAt(i) == 'Y'){</span>
+<span class="fc" id="L389">                        this.yellowEnemy.add(new YellowEnemy(this,x+(32*i), y-16,yellowEnemyImage,walls,broken,player));</span>
+<span class="fc" id="L390">                        this.empty.add(new Empty(x+(32*i), y,emptyImage));</span>
+<span class="fc bfc" id="L391" title="All 2 branches covered.">                    }else if(data.charAt(i) == 'R'){</span>
+<span class="fc" id="L392">                        this.redEnemy.add(new RedEnemy(this,x+(32*i), y-16,redEnemyImage,walls,broken,player));</span>
+<span class="fc" id="L393">                        this.empty.add(new Empty(x+(32*i), y,emptyImage));</span>
                     }else{
-<span class="nc" id="L395">                        this.empty.add(new Empty(x+(32*i), y,emptyImage));</span>
+<span class="fc" id="L395">                        this.empty.add(new Empty(x+(32*i), y,emptyImage));</span>
                     }
                     
                 }
-<span class="nc" id="L399">                y += 32;</span>
-<span class="nc" id="L400">        }</span>
-<span class="nc" id="L401">         myReader.close();</span>
+<span class="fc" id="L399">                y += 32;</span>
+<span class="fc" id="L400">        }</span>
+<span class="fc" id="L401">         myReader.close();</span>
 <span class="nc" id="L402">        } catch (FileNotFoundException e) {</span>
 <span class="nc" id="L403">            println(&quot;An error occurred.&quot;);</span>
-<span class="nc" id="L404">        }</span>
-<span class="nc" id="L405">    }</span>
+<span class="fc" id="L404">        }</span>
+<span class="fc" id="L405">    }</span>
     public static void main(String[] args) {
 <span class="nc" id="L407">        PApplet.main(&quot;demolition.App&quot;);</span>
 <span class="nc" id="L408">    }</span>

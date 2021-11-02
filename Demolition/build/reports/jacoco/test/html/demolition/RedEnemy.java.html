@@ -35,31 +35,31 @@ public class RedEnemy extends MovingObject{
 <span class="fc bfc" id="L35" title="All 2 branches covered.">        if(move==4){</span>
 <span class="fc" id="L36">        boolean success = false;</span>
 <span class="fc bfc" id="L37" title="All 2 branches covered.">            while(!success) {</span>
-<span class="pc bpc" id="L38" title="1 of 2 branches missed.">                if (this.direction==1){</span>
-<span class="nc" id="L39">                    success=this.moveRight();</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">                if (this.direction==1){</span>
+<span class="fc" id="L39">                    success=this.moveRight();</span>
 <span class="pc bpc" id="L40" title="1 of 2 branches missed.">                }else if(this.direction==3){</span>
 <span class="nc" id="L41">                    success=this.moveLeft();</span>
-<span class="pc bpc" id="L42" title="1 of 2 branches missed.">                }else if(this.direction==2){</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">                }else if(this.direction==2){</span>
 <span class="fc" id="L43">                    success=this.moveDown();</span>
-<span class="nc bnc" id="L44" title="All 2 branches missed.">                }else if(this.direction==0){</span>
-<span class="nc" id="L45">                    success=this.moveUp();</span>
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">                }else if(this.direction==0){</span>
+<span class="fc" id="L45">                    success=this.moveUp();</span>
                 }
-<span class="pc bpc" id="L47" title="1 of 2 branches missed.">                if(!success)</span>
-<span class="nc" id="L48">                    this.direction = this.rand.nextInt(4);</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">                if(!success)</span>
+<span class="fc" id="L48">                    this.direction = this.rand.nextInt(4);</span>
             }
 <span class="fc" id="L50">            move = 0;</span>
         }
         try{
-<span class="pc bpc" id="L53" title="1 of 2 branches missed.">            if (direction == 2){</span>
-<span class="nc" id="L54">                this.setSprite(app.loadImage(&quot;src/main/resources/red_enemy/red_down&quot; + counter + &quot;.png&quot;));</span>
-<span class="nc bnc" id="L55" title="All 2 branches missed.">            }else if(direction == 3){</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">            if (direction == 2){</span>
+<span class="fc" id="L54">                this.setSprite(app.loadImage(&quot;src/main/resources/red_enemy/red_down&quot; + counter + &quot;.png&quot;));</span>
+<span class="pc bpc" id="L55" title="1 of 2 branches missed.">            }else if(direction == 3){</span>
 <span class="nc" id="L56">                this.setSprite(app.loadImage(&quot;src/main/resources/red_enemy/red_left&quot; + counter + &quot;.png&quot;));</span>
-<span class="nc bnc" id="L57" title="All 2 branches missed.">            }else if(direction == 0){</span>
-<span class="nc" id="L58">                this.setSprite(app.loadImage(&quot;src/main/resources/red_enemy/red_up&quot; + counter + &quot;.png&quot;));</span>
-<span class="nc bnc" id="L59" title="All 2 branches missed.">            }else if(direction == 1){</span>
-<span class="nc" id="L60">                this.setSprite(app.loadImage(&quot;src/main/resources/red_enemy/red_right&quot; + counter + &quot;.png&quot;));</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">            }else if(direction == 0){</span>
+<span class="fc" id="L58">                this.setSprite(app.loadImage(&quot;src/main/resources/red_enemy/red_up&quot; + counter + &quot;.png&quot;));</span>
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">            }else if(direction == 1){</span>
+<span class="fc" id="L60">                this.setSprite(app.loadImage(&quot;src/main/resources/red_enemy/red_right&quot; + counter + &quot;.png&quot;));</span>
             }
-<span class="pc" id="L62">        }catch(Exception e){}</span>
+<span class="fc" id="L62">        }catch(Exception e){}</span>
 <span class="fc" id="L63">        counter += 1;</span>
 <span class="fc bfc" id="L64" title="All 2 branches covered.">        if(counter&gt;4)</span>
 <span class="fc" id="L65">            counter = 1;   </span>
@@ -76,16 +76,9 @@ public class RedEnemy extends MovingObject{
 <span class="fc" id="L76">            playerX = player.getX();</span>
 <span class="fc" id="L77">            playerY = player.getY();</span>
 <span class="fc" id="L78">        }</span>
-<span class="pc bpc" id="L79" title="1 of 4 branches missed.">        if(this.x == playerX &amp;&amp; this.y == playerY)</span>
+<span class="fc bfc" id="L79" title="All 4 branches covered.">        if(this.x == playerX &amp;&amp; this.y == playerY)</span>
 <span class="fc" id="L80">            return true;</span>
 <span class="fc" id="L81">        return false;</span>
-    }
-
-
-
-    
-
-
-    
+    } 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

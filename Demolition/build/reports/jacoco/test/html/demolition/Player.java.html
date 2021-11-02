@@ -30,20 +30,20 @@ public class Player extends MovingObject{
      */
     public void tick() {
         
-<span class="nc bnc" id="L33" title="All 2 branches missed.">        if (direction == 2){</span>
-<span class="nc" id="L34">            this.setSprite(app.loadImage(&quot;src/main/resources/player/player&quot; + counter + &quot;.png&quot;));</span>
-<span class="nc bnc" id="L35" title="All 2 branches missed.">        }else if(direction == 3){</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        if (direction == 2){</span>
+<span class="fc" id="L34">            this.setSprite(app.loadImage(&quot;src/main/resources/player/player&quot; + counter + &quot;.png&quot;));</span>
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">        }else if(direction == 3){</span>
 <span class="nc" id="L36">            this.setSprite(app.loadImage(&quot;src/main/resources/player/player_left&quot; + counter + &quot;.png&quot;));</span>
-<span class="nc bnc" id="L37" title="All 2 branches missed.">        }else if(direction == 0){</span>
-<span class="nc" id="L38">            this.setSprite(app.loadImage(&quot;src/main/resources/player/player_up&quot; + counter + &quot;.png&quot;));</span>
-<span class="nc bnc" id="L39" title="All 2 branches missed.">        }else if(direction == 1){</span>
-<span class="nc" id="L40">            this.setSprite(app.loadImage(&quot;src/main/resources/player/player_right&quot; + counter + &quot;.png&quot;));</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        }else if(direction == 0){</span>
+<span class="fc" id="L38">            this.setSprite(app.loadImage(&quot;src/main/resources/player/player_up&quot; + counter + &quot;.png&quot;));</span>
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">        }else if(direction == 1){</span>
+<span class="fc" id="L40">            this.setSprite(app.loadImage(&quot;src/main/resources/player/player_right&quot; + counter + &quot;.png&quot;));</span>
         }
-<span class="nc" id="L42">        counter += 1;</span>
-<span class="nc bnc" id="L43" title="All 2 branches missed.">        if(counter&gt;4)</span>
-<span class="nc" id="L44">            counter = 1;</span>
+<span class="fc" id="L42">        counter += 1;</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        if(counter&gt;4)</span>
+<span class="fc" id="L44">            counter = 1;</span>
 
-<span class="nc" id="L46">    }</span>
+<span class="fc" id="L46">    }</span>
     
     /**
     Checks if the player has reached the goal tile
