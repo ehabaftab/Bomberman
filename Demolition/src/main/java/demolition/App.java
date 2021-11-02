@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.Scanner;
 import java.lang.Object;
 import processing.data.JSONObject;
+import processing.data.JSONArray;
 
 
 public class App extends PApplet {
@@ -37,18 +38,16 @@ public class App extends PApplet {
     private ArrayList<Wall> walls;
     private ArrayList<Broken> broken;
     private ArrayList<Goal> goal;
-    private String levelOneFile;
-    private String levelTwoFile;
-    private int currentLevel = 1;
-    private int levelOneTime;
-    private int levelTwoTime;
+    private String levelFile;
+    private int currentLevel = 0;
+    private int levelTime;
+    private int levels;
     private int lives;
     private int playerTimer = 15;
     private int redEnemyTimer = 15;
     private int yellowEnemyTimer = 15;
     private int bombTimer = 15;
     private int explosionTimer = 30;
-    private int levelTime;
     private int counter = 0;
     private Bomb bombToRemove;
     private boolean pressed = false;
@@ -103,15 +102,16 @@ public class App extends PApplet {
             }
             JSONObject config = JSONObject.parse(s.toString());
             lives = config.getInt("lives");
-            levelOneFile = config.getJSONArray("levels").getJSONObject(0).getString("path");
-            levelOneTime = config.getJSONArray("levels").getJSONObject(0).getInt("time");
-            levelTwoFile = config.getJSONArray("levels").getJSONObject(1).getString("path");
-            levelTwoTime = config.getJSONArray("levels").getJSONObject(1).getInt("time");
+            JSONArray array = config.getJSONArray("levels");
+            levels = array.size()-1;
+            levelFile = config.getJSONArray("levels").getJSONObject(currentLevel).getString("path");
+            levelTime = config.getJSONArray("levels").getJSONObject(currentLevel).getInt("time");
+
             jsonReader.close();
         } catch (FileNotFoundException e) {
             println("An error occurred.");
         }
-        loadLevel(currentLevel);
+        loadLevel();
     }
 
     /**
@@ -120,7 +120,7 @@ public class App extends PApplet {
     public void draw() {
         if(levelFinished){
             
-            if(currentLevel == 2){
+            if(currentLevel == levels){
                 gameOver = true;
                 gameWon = true;
                 gameOverScreen();
@@ -263,16 +263,7 @@ public class App extends PApplet {
                     levelFinished = player.checkWin();
                 }
             }else if(key == 32){
-                if(gameOver){
-                    gameWon = false;
-                    currentLevel = 1;
-                    reset();
-                    setup();
-                    gameOver = false;
-                
-                }else{
-                    addBomb();
-                }
+                addBomb();
             }
             pressed = true;
         }
@@ -325,7 +316,7 @@ public class App extends PApplet {
         this.yellowEnemy.clear();
         this.goal.clear();
         if(!gameOver && !levelFinished)
-            loadLevel(currentLevel);
+            loadLevel();
     }
 
     /**
@@ -359,18 +350,14 @@ public class App extends PApplet {
     /**
     loads level
      */
-    public void loadLevel(int num){
+    public void loadLevel(){
         int x = 0;
         int y = 64;
         File myObj;
         try {
-            if(num == 1){
-                myObj = new File(levelOneFile);
-                levelTime = levelOneTime;
-            }else{
-                myObj = new File(levelTwoFile);
-                levelTime = levelTwoTime;
-            }
+            myObj = new File(levelFile);
+            levelTime = this.levelTime;
+            
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
