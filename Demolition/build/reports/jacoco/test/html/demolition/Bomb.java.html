@@ -130,21 +130,21 @@ public class Bomb extends GameObject {
 <span class="fc bfc" id="L130" title="All 2 branches covered.">            for(int j=0; j &lt; this.player.size(); j++){</span>
 <span class="fc" id="L131">                objectY = this.player.get(j).getY();</span>
 <span class="fc" id="L132">                objectX = this.player.get(j).getX();</span>
-<span class="pc bpc" id="L133" title="5 of 6 branches missed.">                if(startY + (32*i)-16 == objectY &amp;&amp; startX == objectX &amp;&amp; !alreadyBrokenDown){</span>
-<span class="nc" id="L134">                    this.player.remove(this.player.get(j));</span>
-<span class="nc" id="L135">                    reset = true;</span>
+<span class="pc bpc" id="L133" title="1 of 6 branches missed.">                if(startY + (32*i)-16 == objectY &amp;&amp; startX == objectX &amp;&amp; !alreadyBrokenDown){</span>
+<span class="fc" id="L134">                    this.player.remove(this.player.get(j));</span>
+<span class="fc" id="L135">                    reset = true;</span>
                 }
-<span class="pc bpc" id="L137" title="3 of 6 branches missed.">                else if(startY - (32*i)-16 == objectY &amp;&amp; startX == objectX &amp;&amp; !alreadyBrokenUp){</span>
-<span class="nc" id="L138">                    this.player.remove(this.player.get(j));</span>
-<span class="nc" id="L139">                    reset = true;</span>
+<span class="pc bpc" id="L137" title="1 of 6 branches missed.">                else if(startY - (32*i)-16 == objectY &amp;&amp; startX == objectX &amp;&amp; !alreadyBrokenUp){</span>
+<span class="fc" id="L138">                    this.player.remove(this.player.get(j));</span>
+<span class="fc" id="L139">                    reset = true;</span>
                 }
-<span class="pc bpc" id="L141" title="5 of 6 branches missed.">                else if(startX + (32*i) == objectX &amp;&amp; startY-16 == objectY &amp;&amp; !alreadyBrokenRight){</span>
-<span class="nc" id="L142">                    this.player.remove(this.player.get(j));</span>
-<span class="nc" id="L143">                    reset = true;</span>
+<span class="pc bpc" id="L141" title="1 of 6 branches missed.">                else if(startX + (32*i) == objectX &amp;&amp; startY-16 == objectY &amp;&amp; !alreadyBrokenRight){</span>
+<span class="fc" id="L142">                    this.player.remove(this.player.get(j));</span>
+<span class="fc" id="L143">                    reset = true;</span>
                 }
-<span class="pc bpc" id="L145" title="3 of 6 branches missed.">                else if(startX - (32*i) == objectX &amp;&amp; startY-16 == objectY &amp;&amp; !alreadyBrokenLeft){</span>
-<span class="nc" id="L146">                    this.player.remove(this.player.get(j));</span>
-<span class="nc" id="L147">                    reset = true;</span>
+<span class="pc bpc" id="L145" title="1 of 6 branches missed.">                else if(startX - (32*i) == objectX &amp;&amp; startY-16 == objectY &amp;&amp; !alreadyBrokenLeft){</span>
+<span class="fc" id="L146">                    this.player.remove(this.player.get(j));</span>
+<span class="fc" id="L147">                    reset = true;</span>
                 }
                     
             }
@@ -214,22 +214,22 @@ public class Bomb extends GameObject {
 <span class="fc bfc" id="L214" title="All 2 branches covered.">            for (Wall wall : this.walls) {</span>
 <span class="fc" id="L215">                objectY = wall.getY();</span>
 <span class="fc" id="L216">                objectX = wall.getX();</span>
-<span class="pc bpc" id="L217" title="3 of 4 branches missed.">                if(startY + (32*i) == objectY &amp;&amp; startX == objectX)</span>
-<span class="nc" id="L218">                    foundPositive = true;</span>
-<span class="pc bpc" id="L219" title="3 of 4 branches missed.">                if(startY - (32*i) == objectY &amp;&amp; startX == objectX)</span>
-<span class="nc" id="L220">                    foundNegative = true;</span>
+<span class="pc bpc" id="L217" title="1 of 4 branches missed.">                if(startY + (32*i) == objectY &amp;&amp; startX == objectX)</span>
+<span class="fc" id="L218">                    foundPositive = true;</span>
+<span class="pc bpc" id="L219" title="1 of 4 branches missed.">                if(startY - (32*i) == objectY &amp;&amp; startX == objectX)</span>
+<span class="fc" id="L220">                    foundNegative = true;</span>
 <span class="fc" id="L221">            }</span>
 <span class="fc bfc" id="L222" title="All 2 branches covered.">            for (Broken broken: this.broken) {</span>
 <span class="fc" id="L223">                objectY = broken.getY();</span>
 <span class="fc" id="L224">                objectX = broken.getX();</span>
-<span class="pc bpc" id="L225" title="1 of 4 branches missed.">                if(startY + (32*i) == objectY &amp;&amp; startX == objectX)</span>
-<span class="nc" id="L226">                    foundPositive = true;</span>
-<span class="pc bpc" id="L227" title="3 of 4 branches missed.">                if(startY - (32*i) == objectY &amp;&amp; startX == objectX)</span>
-<span class="nc" id="L228">                    foundNegative = true;</span>
+<span class="fc bfc" id="L225" title="All 4 branches covered.">                if(startY + (32*i) == objectY &amp;&amp; startX == objectX)</span>
+<span class="fc" id="L226">                    foundPositive = true;</span>
+<span class="pc bpc" id="L227" title="1 of 4 branches missed.">                if(startY - (32*i) == objectY &amp;&amp; startX == objectX)</span>
+<span class="fc" id="L228">                    foundNegative = true;</span>
 <span class="fc" id="L229">            }</span>
-<span class="pc bpc" id="L230" title="1 of 2 branches missed.">             if(!foundPositive)</span>
+<span class="fc bfc" id="L230" title="All 2 branches covered.">             if(!foundPositive)</span>
 <span class="fc" id="L231">                app.image(app.loadImage(&quot;src/main/resources/explosion/vertical.png&quot;), startX,startY +(32*i));</span>
-<span class="pc bpc" id="L232" title="1 of 2 branches missed.">             if(!foundNegative)</span>
+<span class="fc bfc" id="L232" title="All 2 branches covered.">             if(!foundNegative)</span>
 <span class="fc" id="L233">                app.image(app.loadImage(&quot;src/main/resources/explosion/vertical.png&quot;), startX,startY - (32*i));</span>
         }
 
@@ -240,20 +240,20 @@ public class Bomb extends GameObject {
 <span class="fc bfc" id="L240" title="All 2 branches covered.">            for (Wall wall : this.walls) {</span>
 <span class="fc" id="L241">                objectX = wall.getX();</span>
 <span class="fc" id="L242">                objectY = wall.getY();</span>
-<span class="pc bpc" id="L243" title="3 of 4 branches missed.">                if(startX + (32*i) == objectX &amp;&amp; startY == objectY)</span>
-<span class="nc" id="L244">                    foundPositive = true;</span>
+<span class="pc bpc" id="L243" title="1 of 4 branches missed.">                if(startX + (32*i) == objectX &amp;&amp; startY == objectY)</span>
+<span class="fc" id="L244">                    foundPositive = true;</span>
 <span class="pc bpc" id="L245" title="1 of 4 branches missed.">                if(startX - (32*i) == objectX &amp;&amp; startY == objectY)</span>
 <span class="fc" id="L246">                    foundNegative = true;</span>
 <span class="fc" id="L247">            }</span>
 <span class="fc bfc" id="L248" title="All 2 branches covered.">            for (Broken broken: this.broken) {</span>
 <span class="fc" id="L249">                objectX = broken.getX();</span>
 <span class="fc" id="L250">                objectY = broken.getY();</span>
-<span class="pc bpc" id="L251" title="3 of 4 branches missed.">                if(startX + (32*i) == objectX &amp;&amp; startY == objectY)</span>
-<span class="nc" id="L252">                    foundPositive = true;</span>
-<span class="pc bpc" id="L253" title="1 of 4 branches missed.">                if(startX - (32*i) == objectX &amp;&amp; startY == objectY)</span>
-<span class="nc" id="L254">                    foundNegative = true;</span>
+<span class="pc bpc" id="L251" title="1 of 4 branches missed.">                if(startX + (32*i) == objectX &amp;&amp; startY == objectY)</span>
+<span class="fc" id="L252">                    foundPositive = true;</span>
+<span class="fc bfc" id="L253" title="All 4 branches covered.">                if(startX - (32*i) == objectX &amp;&amp; startY == objectY)</span>
+<span class="fc" id="L254">                    foundNegative = true;</span>
 <span class="fc" id="L255">            }</span>
-<span class="pc bpc" id="L256" title="1 of 2 branches missed.">            if(!foundPositive)</span>
+<span class="fc bfc" id="L256" title="All 2 branches covered.">            if(!foundPositive)</span>
 <span class="fc" id="L257">                app.image(app.loadImage(&quot;src/main/resources/explosion/horizontal.png&quot;),startX +(32*i),startY);</span>
 <span class="fc bfc" id="L258" title="All 2 branches covered.">            if(!foundNegative)</span>
 <span class="fc" id="L259">                app.image(app.loadImage(&quot;src/main/resources/explosion/horizontal.png&quot;), startX - (32*i),startY);</span>

@@ -35,11 +35,41 @@ public class KillMoving{
         this.testRedEnemy.add(new RedEnemy(app,64,80,null,this.walls, this.broken,this.player));
         this.walls.add(new Wall(32,96,null));
         this.broken.add(new Broken(64,160,null));
-        this.player.add(new Player(app,32,48,null,this.walls, this.broken,this.goal));
+        //this.player.add(new Player(app,32,48,null,this.walls, this.broken,this.goal));
         this.testYellowEnemy.add(new YellowEnemy(app,64,80,null,this.walls, this.broken,this.player));
         
     }
+    
+    /*
+    - - P - -
+    W P B1 P - 
+    - Y P - -
+    - B - - -
+    */
+    // killing player in 4 different directions
+    @Test
+    public void bombTestPlayer(){
+        this.player.add(new Player(app,96,48,null,this.walls, this.broken,this.goal));
+        assertEquals(this.player.size(),1);
+        this.testBombOne.kill();
+        assertEquals(this.player.size(),0);
 
+        this.player.add(new Player(app,64,80,null,this.walls, this.broken,this.goal));
+        assertEquals(this.player.size(),1);
+        this.testBombOne.kill();
+        assertEquals(this.player.size(),0);
+
+        this.player.add(new Player(app,128,80,null,this.walls, this.broken,this.goal));
+        assertEquals(this.player.size(),1);
+        this.testBombOne.kill();
+        assertEquals(this.player.size(),0);
+
+        this.player.add(new Player(app,96,112,null,this.walls, this.broken,this.goal));
+        assertEquals(this.player.size(),1);
+        this.testBombOne.kill();
+        assertEquals(this.player.size(),0);
+        
+    }
     @Test
     public void bombTestRed(){
         this.testRedEnemy.add(new RedEnemy(app,128,80,null,this.walls, this.broken,this.player));

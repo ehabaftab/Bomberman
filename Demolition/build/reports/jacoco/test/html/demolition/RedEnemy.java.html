@@ -37,8 +37,8 @@ public class RedEnemy extends MovingObject{
 <span class="fc bfc" id="L37" title="All 2 branches covered.">            while(!success) {</span>
 <span class="fc bfc" id="L38" title="All 2 branches covered.">                if (this.direction==1){</span>
 <span class="fc" id="L39">                    success=this.moveRight();</span>
-<span class="pc bpc" id="L40" title="1 of 2 branches missed.">                }else if(this.direction==3){</span>
-<span class="nc" id="L41">                    success=this.moveLeft();</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">                }else if(this.direction==3){</span>
+<span class="fc" id="L41">                    success=this.moveLeft();</span>
 <span class="fc bfc" id="L42" title="All 2 branches covered.">                }else if(this.direction==2){</span>
 <span class="fc" id="L43">                    success=this.moveDown();</span>
 <span class="pc bpc" id="L44" title="1 of 2 branches missed.">                }else if(this.direction==0){</span>
@@ -52,8 +52,8 @@ public class RedEnemy extends MovingObject{
         try{
 <span class="fc bfc" id="L53" title="All 2 branches covered.">            if (direction == 2){</span>
 <span class="fc" id="L54">                this.setSprite(app.loadImage(&quot;src/main/resources/red_enemy/red_down&quot; + counter + &quot;.png&quot;));</span>
-<span class="pc bpc" id="L55" title="1 of 2 branches missed.">            }else if(direction == 3){</span>
-<span class="nc" id="L56">                this.setSprite(app.loadImage(&quot;src/main/resources/red_enemy/red_left&quot; + counter + &quot;.png&quot;));</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">            }else if(direction == 3){</span>
+<span class="fc" id="L56">                this.setSprite(app.loadImage(&quot;src/main/resources/red_enemy/red_left&quot; + counter + &quot;.png&quot;));</span>
 <span class="fc bfc" id="L57" title="All 2 branches covered.">            }else if(direction == 0){</span>
 <span class="fc" id="L58">                this.setSprite(app.loadImage(&quot;src/main/resources/red_enemy/red_up&quot; + counter + &quot;.png&quot;));</span>
 <span class="pc bpc" id="L59" title="1 of 2 branches missed.">            }else if(direction == 1){</span>

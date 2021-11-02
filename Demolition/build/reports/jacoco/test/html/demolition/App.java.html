@@ -143,29 +143,29 @@ public class App extends PApplet {
 <span class="pc bpc" id="L143" title="1 of 2 branches missed.">        if(!gameOver){</span>
 <span class="fc" id="L144">            counter++;</span>
 <span class="fc" id="L145">            loadHeader();</span>
-<span class="pc bpc" id="L146" title="1 of 2 branches missed.">            if(bombTimer == 0){</span>
-<span class="nc bnc" id="L147" title="All 2 branches missed.">                for(Bomb bomb : this.bomb){</span>
+<span class="fc bfc" id="L146" title="All 2 branches covered.">            if(bombTimer == 0){</span>
+<span class="pc bpc" id="L147" title="1 of 2 branches missed.">                for(Bomb bomb : this.bomb){</span>
 <span class="nc" id="L148">                    bomb.tick();</span>
 <span class="nc" id="L149">                }   </span>
-<span class="nc" id="L150">                bombTimer = 15;</span>
+<span class="fc" id="L150">                bombTimer = 15;</span>
             }
-<span class="pc bpc" id="L152" title="1 of 2 branches missed.">            if(redEnemyTimer == 0){</span>
-<span class="nc bnc" id="L153" title="All 2 branches missed.">                for (RedEnemy redEnemy : this.redEnemy){</span>
-<span class="nc" id="L154">                    redEnemy.tick();</span>
-<span class="nc" id="L155">                }</span>
-<span class="nc" id="L156">                redEnemyTimer=15;</span>
+<span class="fc bfc" id="L152" title="All 2 branches covered.">            if(redEnemyTimer == 0){</span>
+<span class="fc bfc" id="L153" title="All 2 branches covered.">                for (RedEnemy redEnemy : this.redEnemy){</span>
+<span class="fc" id="L154">                    redEnemy.tick();</span>
+<span class="fc" id="L155">                }</span>
+<span class="fc" id="L156">                redEnemyTimer=15;</span>
             }
-<span class="pc bpc" id="L158" title="1 of 2 branches missed.">            if(yellowEnemyTimer == 0){</span>
-<span class="nc bnc" id="L159" title="All 2 branches missed.">                for (YellowEnemy yellowEnemy : this.yellowEnemy){</span>
-<span class="nc" id="L160">                    yellowEnemy.tick();</span>
-<span class="nc" id="L161">                }</span>
-<span class="nc" id="L162">                yellowEnemyTimer=15;</span>
+<span class="fc bfc" id="L158" title="All 2 branches covered.">            if(yellowEnemyTimer == 0){</span>
+<span class="fc bfc" id="L159" title="All 2 branches covered.">                for (YellowEnemy yellowEnemy : this.yellowEnemy){</span>
+<span class="fc" id="L160">                    yellowEnemy.tick();</span>
+<span class="fc" id="L161">                }</span>
+<span class="fc" id="L162">                yellowEnemyTimer=15;</span>
             }
-<span class="pc bpc" id="L164" title="1 of 2 branches missed.">            if (playerTimer == 0){</span>
-<span class="nc bnc" id="L165" title="All 2 branches missed.">                for (Player player : this.player) {</span>
-<span class="nc" id="L166">                    player.tick();</span>
-<span class="nc" id="L167">                }</span>
-<span class="nc" id="L168">                playerTimer = 15;</span>
+<span class="fc bfc" id="L164" title="All 2 branches covered.">            if (playerTimer == 0){</span>
+<span class="fc bfc" id="L165" title="All 2 branches covered.">                for (Player player : this.player) {</span>
+<span class="fc" id="L166">                    player.tick();</span>
+<span class="fc" id="L167">                }</span>
+<span class="fc" id="L168">                playerTimer = 15;</span>
             }
 <span class="fc bfc" id="L170" title="All 2 branches covered.">            for (Empty empty : this.empty){</span>
 <span class="fc" id="L171">                empty.draw(this);</span>
@@ -224,9 +224,9 @@ public class App extends PApplet {
 <span class="nc" id="L224">                reset();</span>
             }
 
-<span class="pc bpc" id="L227" title="1 of 2 branches missed.">            if(counter == 60){</span>
-<span class="nc" id="L228">                levelTime -= 1;</span>
-<span class="nc" id="L229">                counter = 0;</span>
+<span class="fc bfc" id="L227" title="All 2 branches covered.">            if(counter == 60){</span>
+<span class="fc" id="L228">                levelTime -= 1;</span>
+<span class="fc" id="L229">                counter = 0;</span>
             }
 <span class="fc" id="L231">            bombTimer -= 1;</span>
 <span class="fc" id="L232">            playerTimer -= 1;</span>
@@ -239,30 +239,30 @@ public class App extends PApplet {
     to control the player using the arrow keys
      */
     public void keyPressed(){
-<span class="nc bnc" id="L242" title="All 2 branches missed.">        if(!pressed){</span>
-<span class="nc" id="L243">            playerTimer = 0;</span>
+<span class="pc bpc" id="L242" title="1 of 2 branches missed.">        if(!pressed){</span>
+<span class="fc" id="L243">            playerTimer = 0;</span>
 
-<span class="nc bnc" id="L245" title="All 2 branches missed.">            if(keyCode == RIGHT){</span>
+<span class="pc bpc" id="L245" title="1 of 2 branches missed.">            if(keyCode == RIGHT){</span>
 <span class="nc bnc" id="L246" title="All 2 branches missed.">                for(Player player : this.player){</span>
 <span class="nc" id="L247">                    player.moveRight();</span>
 <span class="nc" id="L248">                    levelFinished = player.checkWin();</span>
 <span class="nc" id="L249">                }</span>
-<span class="nc bnc" id="L250" title="All 2 branches missed.">            }else if(keyCode == LEFT){</span>
+<span class="pc bpc" id="L250" title="1 of 2 branches missed.">            }else if(keyCode == LEFT){</span>
 <span class="nc bnc" id="L251" title="All 2 branches missed.">                for(Player player : this.player){</span>
 <span class="nc" id="L252">                    player.moveLeft();</span>
 <span class="nc" id="L253">                    levelFinished = player.checkWin();</span>
 <span class="nc" id="L254">                }</span>
-<span class="nc bnc" id="L255" title="All 2 branches missed.">            }else if(keyCode == UP){</span>
+<span class="pc bpc" id="L255" title="1 of 2 branches missed.">            }else if(keyCode == UP){</span>
 <span class="nc bnc" id="L256" title="All 2 branches missed.">                for(Player player : this.player){</span>
 <span class="nc" id="L257">                    player.moveUp();</span>
 <span class="nc" id="L258">                    levelFinished = player.checkWin();</span>
 <span class="nc" id="L259">                }</span>
-<span class="nc bnc" id="L260" title="All 2 branches missed.">            }else if(keyCode == DOWN){</span>
+<span class="pc bpc" id="L260" title="1 of 2 branches missed.">            }else if(keyCode == DOWN){</span>
 <span class="nc bnc" id="L261" title="All 2 branches missed.">                for(Player player : this.player){</span>
 <span class="nc" id="L262">                    player.moveDown();</span>
 <span class="nc" id="L263">                    levelFinished = player.checkWin();</span>
 <span class="nc" id="L264">                }</span>
-<span class="nc bnc" id="L265" title="All 2 branches missed.">            }else if(key == 32){</span>
+<span class="pc bpc" id="L265" title="1 of 2 branches missed.">            }else if(key == 32){</span>
 <span class="nc bnc" id="L266" title="All 2 branches missed.">                if(gameOver){</span>
 <span class="nc" id="L267">                    gameWon = false;</span>
 <span class="nc" id="L268">                    currentLevel = 1;</span>
@@ -274,9 +274,9 @@ public class App extends PApplet {
 <span class="nc" id="L274">                    addBomb();</span>
                 }
             }
-<span class="nc" id="L277">            pressed = true;</span>
+<span class="fc" id="L277">            pressed = true;</span>
         }
-<span class="nc" id="L279">    }</span>
+<span class="fc" id="L279">    }</span>
 
     public void keyReleased(){
 <span class="nc" id="L282">        pressed = false;</span>
@@ -332,17 +332,17 @@ public class App extends PApplet {
     renders the game over screen when the timer ends or player runs out of lives
      */
     public void gameOverScreen(){
-<span class="nc" id="L335">        reset();</span>
-<span class="nc" id="L336">        background(239, 129, 0);</span>
-<span class="nc" id="L337">        textFont(gameOverFont);</span>
-<span class="nc" id="L338">        fill(0);</span>
-<span class="nc bnc" id="L339" title="All 4 branches missed.">        if (lives==0 || levelTime==0){</span>
-<span class="nc" id="L340">            text(&quot;GAME OVER&quot;,130,240);</span>
+<span class="fc" id="L335">        reset();</span>
+<span class="fc" id="L336">        background(239, 129, 0);</span>
+<span class="fc" id="L337">        textFont(gameOverFont);</span>
+<span class="fc" id="L338">        fill(0);</span>
+<span class="pc bpc" id="L339" title="3 of 4 branches missed.">        if (lives==0 || levelTime==0){</span>
+<span class="fc" id="L340">            text(&quot;GAME OVER&quot;,130,240);</span>
         }else{
 <span class="nc" id="L342">            text(&quot;YOU WIN&quot;,150,240);</span>
         }
         
-<span class="nc" id="L345">    }</span>
+<span class="fc" id="L345">    }</span>
     /**
     loads header containing lives of the player and the timer
      */

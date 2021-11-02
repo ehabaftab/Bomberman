@@ -38,14 +38,11 @@ public class AppTest {
     }
     @Test 
     public void basicTest() {
-        this.testBombOne = new Bomb(app,96,96,null,broken,walls,player,testRedEnemy,testYellowEnemy);
         this.testRedEnemy.add(new RedEnemy(app,64,80,null,this.walls, this.broken,this.player));
-        this.walls.add(new Wall(32,96,null));
         this.broken.add(new Broken(64,160,null));
         this.player.add(new Player(app,32,48,null,this.walls, this.broken,this.goal));
         this.testYellowEnemy.add(new YellowEnemy(app,64,80,null,this.walls, this.broken,this.player));
         app.settings();
-        testBombOne.renderExplosion();
         testRedEnemy.get(0).tick();
 
         //setSprite Check
@@ -58,8 +55,32 @@ public class AppTest {
         testPlayer.tick();
         testYellowEnemy.get(0).tick();
         app.addBomb();
-        app.reset();        
+        app.reset();
+        app.keyPressed();
+        for(int i=0; i<240;i++)    
+            app.draw();   
+        app.gameOverScreen(); 
         
+    }
+    /*
+    - - W- -
+    - W B W
+    */
+    // rendering when surrounded by walls
+    @Test
+    public void bombTest(){
+        this.testBombOne = new Bomb(app,96,96,null,broken,walls,player,testRedEnemy,testYellowEnemy);   
+        testBombOne.renderExplosion();
+        this.walls.add(new Wall(64,96,null));      
+        this.walls.add(new Wall(128,96,null));      
+        this.walls.add(new Wall(96,64,null));
+        this.walls.add(new Wall(96,128,null));
+        this.broken.add(new Broken(64,96,null));   
+        this.broken.add(new Broken(128,96,null));   
+        this.broken.add(new Broken(96,64,null));   
+        this.broken.add(new Broken(96,128,null));   
+        testBombOne.renderExplosion();
+
     }
 
     /*
@@ -68,6 +89,7 @@ public class AppTest {
     B Y - - -
     - B - - -
     */
+    //movement of yellow enemy
     @Test
     public void yellowEnemyTest(){
         this.broken.add(new Broken(64,64,null));
@@ -88,9 +110,9 @@ public class AppTest {
     B B - - -
     - B - - -
     */
+    //movement of red enemy
     @Test
     public void redEnemyTest(){
-        
         this.broken.add(new Broken(96,96,null));
         this.broken.add(new Broken(64,32,null));
         assertEquals(this.redEnemy.getY(),80);
