@@ -16,6 +16,7 @@ public class checkWinTest{
         this.goal.add(new Goal(64,64,null));
     }
 
+    //test to checkwin if the player moves to the goal tile
     @Test
     public void checkWin(){
         assertFalse(this.testPlayer.checkWin());

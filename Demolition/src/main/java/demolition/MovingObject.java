@@ -24,6 +24,8 @@ public abstract class MovingObject extends GameObject {
 
     /**
     Constructor
+    @param walls stores the list of walls
+    @param broken stores the list of broken walls
      */
     public MovingObject(PApplet app,int x, int y, PImage sprite, ArrayList<Wall> walls, ArrayList<Broken> broken){
         super(x, y, sprite);

@@ -45,6 +45,8 @@ public class PlayerTest{
         
     }
 
+// PLAYER AND ENEMY MOVEMENTS
+
     @Test
     public void moveRightTest(){
         assertFalse(this.testPlayer.moveRight());

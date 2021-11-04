@@ -36,6 +36,9 @@ public class AppTest {
         this.redEnemy = new RedEnemy(app,64,80,null,this.walls, this.broken,this.player);
         this.yellowEnemy = new YellowEnemy(app,64,112,null,this.walls, this.broken,this.player);
     }
+
+
+    // basic app testing
     @Test 
     public void basicTest() {
         this.testRedEnemy.add(new RedEnemy(app,64,80,null,this.walls, this.broken,this.player));
@@ -65,6 +68,7 @@ public class AppTest {
     /*
     - - W- -
     - W B W
+    rendering when surrounded by walls
     */
     // rendering when surrounded by walls
     @Test
@@ -88,8 +92,9 @@ public class AppTest {
     W B - - - 
     B Y - - -
     - B - - -
+    movement of yellow enemy in different directions
     */
-    //movement of yellow enemy
+    
     @Test
     public void yellowEnemyTest(){
         this.broken.add(new Broken(64,64,null));
@@ -109,8 +114,10 @@ public class AppTest {
     W R B - - 
     B B - - -
     - B - - -
+
+     movement of red enemy in different directions
     */
-    //movement of red enemy
+
     @Test
     public void redEnemyTest(){
         this.broken.add(new Broken(96,96,null));

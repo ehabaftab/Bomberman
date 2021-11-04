@@ -24,6 +24,7 @@ public abstract class GameObject {
     Constructor
     @param x the x-coordinate
     @param y the y-coordinate
+    @param sprite the sprote for the object
      */
     public GameObject(int x, int y, PImage sprite) {
         this.x = x;

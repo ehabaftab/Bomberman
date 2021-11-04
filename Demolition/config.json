@@ -5,6 +5,10 @@
       "time": 50
     },
     {
+      "path": "level1.txt",
+      "time": 60
+    },
+    {
       "path": "level2.txt",
       "time": 180
     }

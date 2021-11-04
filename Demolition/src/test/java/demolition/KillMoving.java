@@ -82,7 +82,7 @@ public class KillMoving{
         assertEquals(this.testRedEnemy.size(),0);
     }
     
-
+    //tests to check if Yellow Enemies are removed if a bomb explodes
     @Test
     public void bombTestYellow(){
         this.testYellowEnemy.add(new YellowEnemy(app,128,80,null,this.walls, this.broken,this.player));
@@ -95,6 +95,7 @@ public class KillMoving{
         assertEquals(this.testYellowEnemy.size(),0);
     }
 
+    //tests to check if broken walls are removed if a bomb explodes
     @Test
     public void bombTestBroken(){
         this.testBombOne = new Bomb(app,96,160,null,broken,walls,player,testRedEnemy,testYellowEnemy);
@@ -111,6 +112,8 @@ public class KillMoving{
     - - - - -
     R P Y - -
     - - - - - 
+
+    tests for when the players moves to a red or yellow enemy
     */
 
     @Test

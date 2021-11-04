@@ -11,7 +11,10 @@ import java.lang.Object;
 import processing.data.JSONObject;
 import processing.data.JSONArray;
 
-
+/**
+Builds a game where the player must guide Bomb Guy around the map,
+ destroying walls to reach the goal whilst avoiding enemies.
+ */
 public class App extends PApplet {
 
     public static final int WIDTH = 480;
@@ -101,7 +104,8 @@ public class App extends PApplet {
                 s.append(jsonReader.nextLine());
             }
             JSONObject config = JSONObject.parse(s.toString());
-            lives = config.getInt("lives");
+            if(currentLevel == 0)
+                lives = config.getInt("lives");
             JSONArray array = config.getJSONArray("levels");
             levels = array.size()-1;
             levelFile = config.getJSONArray("levels").getJSONObject(currentLevel).getString("path");
@@ -301,7 +305,7 @@ public class App extends PApplet {
     resets the level if the user dies
      */
     public void reset(){
-        if(!gameOver){
+        if(!levelFinished){
             lives -= 1;
             if(lives<0)
                 lives = 0;
@@ -384,6 +388,11 @@ public class App extends PApplet {
                     
                 }
                 y += 32;
+            }
+        if(player.size() >1){
+            for(int i=1; i < player.size();i++)
+                player.remove(player.get(i));
+
         }
          myReader.close();
         } catch (FileNotFoundException e) {
